@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "658323524041",
+    "firebase_url": "https://progmobile-77e14.firebaseio.com",
+    "project_id": "progmobile-77e14",
+    "storage_bucket": "progmobile-77e14.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658323524041:android:5e8103153951b7c847c018",
+        "android_client_info": {
+          "package_name": "com.progetto.progmobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "658323524041-doakhog1uu7dqekj3cvvkd5l0q5tsidu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1oh2WCZHmpvdx3Ebj7UoI3YwgfwtaJ30"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "658323524041-doakhog1uu7dqekj3cvvkd5l0q5tsidu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
