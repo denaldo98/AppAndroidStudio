@@ -2,9 +2,12 @@ package com.progetto.progmobile;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Pair;
+import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -38,12 +41,15 @@ public class MainActivity extends AppCompatActivity {
         logo.setAnimation(bottomAnim); //le due text view entrano dal basso
         slogan.setAnimation(bottomAnim);
 
-        new Handler().postDelayed(new Runnable() {    //handler per far partire la dashboard con un intent dopo i 5 secondi
+        new Handler().postDelayed(new Runnable() {    //handler per far partire la dashboard activity dopo i 5 secondi
             @Override
             public void run() {
-                Intent intent = new Intent(MainActivity.this, Dashboard.class );
-                startActivity(intent);
-                finish(); //altrimenti se premo indietro ritorno qui: ma dalla dashboars. Con finish rimuovo l'activity dallo stack
+                Intent intent = new Intent(MainActivity.this, Login.class );
+                Pair[] pairs = new Pair[2];
+                pairs[0] = new Pair<View, String>(image, "logo_image");
+                pairs[1] = new Pair<View, String>(logo, "logo_text");
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,pairs);
+                startActivity(intent, options.toBundle()); //gli options portano le animations degli elementi della login activity
             }
         }, SPLASH_SCREEN);
 
