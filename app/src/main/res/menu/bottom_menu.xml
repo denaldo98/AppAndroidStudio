@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_todo"
+        android:title="To do"
+        android:icon="@drawable/ic_format_list_numbered_black_24dp"
+        android:checked="true"/>
+
+    <item
+        android:id="@+id/menu_corsi"
+        android:title="Corsi"
+        android:icon="@drawable/ic_create_black_24dp"/>
+
+    <item
+        android:id="@+id/menu_orario"
+        android:title="Orario"
+        android:icon="@drawable/ic_date_range_black_24dp"/>
+
+    <item
+        android:id="@+id/menu_appelli"
+        android:title="Appelli"
+        android:icon="@drawable/ic_school_black_24dp"/>
+
+
+
+
+</menu>

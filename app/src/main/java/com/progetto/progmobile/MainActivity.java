@@ -44,12 +44,13 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {    //handler per far partire la dashboard activity dopo i 5 secondi
             @Override
             public void run() {
-                Intent intent = new Intent(MainActivity.this, Login.class );
-                Pair[] pairs = new Pair[2];
+                Intent intent = new Intent(MainActivity.this, HomeActivity.class );
+                startActivity(intent);
+                /*Pair[] pairs = new Pair[2];
                 pairs[0] = new Pair<View, String>(image, "logo_image");
                 pairs[1] = new Pair<View, String>(logo, "logo_text");
                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,pairs);
-                startActivity(intent, options.toBundle()); //gli options portano le animations degli elementi della login activity
+                startActivity(intent, options.toBundle()); //gli options portano le animations degli elementi della login activity */
             }
         }, SPLASH_SCREEN);
 
