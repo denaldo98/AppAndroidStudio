@@ -15,19 +15,22 @@ import android.widget.TextView;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class Login extends AppCompatActivity {
+
         Button btn_register, btn_login;
         ImageView image;
         TextView logoText, sloganText;
         TextInputLayout username, password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Per togliere la status bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
         btn_register = findViewById(R.id.btn_signup);
         btn_login = findViewById(R.id.btn_login);
-        image = findViewById(R.id.logo_Image);
+        image = findViewById(R.id.logo_image);
         logoText = findViewById(R.id.logo_name);
         sloganText = findViewById(R.id.slogan_name);
         username = findViewById(R.id.username);

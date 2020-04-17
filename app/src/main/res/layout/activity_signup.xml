@@ -14,7 +14,7 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:src="@drawable/splash_screen_background"
-        android:transitionName="logo_image" />
+        android:transitionName="logo_image"/>
 
     <TextView
         android:id="@+id/logo_name"
@@ -31,13 +31,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SignUp to start"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        android:transitionName="logo_desc"/>
     
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp">
 
 
@@ -61,6 +62,7 @@
             android:layout_height="wrap_content"
             android:hint="Username"
             app:counterMaxLength="15"
+            android:transitionName="username_tran"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
