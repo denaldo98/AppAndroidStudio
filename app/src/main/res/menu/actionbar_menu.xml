@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_impostazioni"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:title="Impostazioni"/>
+    <item
+        android:id="@+id/menu_contattaci"
+        android:icon="@drawable/ic_email_black_24dp"
+        android:title="Contattaci"/>
+    <item
+        android:id="@+id/menu_faq"
+        android:icon="@drawable/ic_help_outline_black_24dp"
+        android:title="Faq"/>
+    <item
+        android:id="@+id/menu_privacy"
+        android:icon="@drawable/ic_security_black_24dp"
+        android:title="Informativa privacy"/>
+    <item
+        android:id="@+id/menu_logout"
+        android:icon="@drawable/ic_power_settings_new_black_24dp"
+        android:title="Logout"/>
+</menu>
