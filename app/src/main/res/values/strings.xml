@@ -1,3 +1,37 @@
 <resources>
     <string name="app_name">UniApp</string>
+    <string-array name="arrayAttivit">
+        <item>Attività 1</item>
+        <item>Attività 2</item>
+        <item>Attività 3</item>
+        <item>Nome generico</item>
+        <item>Nome generico</item>
+        <item>Nome generico</item>
+    </string-array>
+    <string-array name="scadenze">
+        <item>19/04/20</item>
+        <item>23/04/20</item>
+        <item>01/05/20</item>
+        <item>01/01/21</item>
+        <item>01/01/21</item>
+        <item>01/01/21</item>
+    </string-array>
+    <string-array name="descrizioni">
+        <item>Descrizione 1</item>
+        <item>Descrizione 2</item>
+        <item>Descrizione 3</item>
+        <item>Descrizione generica</item>
+        <item>Descrizione generica</item>
+        <item>Descrizione genericaDescrizione genericaDescrizione genericaDescrizione genericaDescrizione genericaDescrizione genericaDescrizione genericaDescrizione genericaDescrizione generica
+        Descrizione genericaDescrizione genericaDescrizione genericaDescrizione genericaDescrizione genericaDescrizione genericaDescrizione generica</item>
+
+    </string-array>
+    <integer-array name="priorita">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+    </integer-array>
 </resources>
