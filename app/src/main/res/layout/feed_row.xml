@@ -3,16 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textAttivita"
+        android:id="@+id/textNome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
-        android:textColor="#0016D3"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="NOME"
+        android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,30 +24,35 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="TextView"
-        android:textStyle="bold"
+        android:layout_marginEnd="16dp"
+        android:text="data"
+        android:textAlignment="textEnd"
+        android:textSize="18sp"
+        android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textDescrizione"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
         android:layout_marginBottom="8dp"
-        android:text="TextView"
+        android:text="Descrizione"
+        android:textAlignment="textStart"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textAttivita" />
+        app:layout_constraintTop_toBottomOf="@+id/textNome" />
 
     <ImageView
-        android:id="@+id/cerchioPriorita"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:id="@+id/immaginePriorita"
+        android:layout_width="22dp"
+        android:layout_height="21dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toStartOf="@+id/textData"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/picture_frame" />
+        app:srcCompat="@drawable/circle" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
