@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menuSettings"
+        android:icon="@drawable/ic_settings_black_24dp"
+        app:showAsAction="never"
+        android:title="Impostazioni">
+    </item>
+    <item
+        android:id="@+id/menuLogout"
+        android:icon="@drawable/ic_power_settings_new_black_24dp"
+        app:showAsAction="never"
+        android:title="Logout">
+    </item>
+    <item
+        android:id="@+id/menuPrivacy"
+        android:icon="@drawable/ic_security_black_24dp"
+        app:showAsAction="never"
+        android:title="Privacy">
+    </item>
+    <item
+        android:id="@+id/menuFaq"
+        android:icon="@drawable/ic_help_black_24dp"
+        app:showAsAction="never"
+        android:title="Faq">
+    </item>
+
+</menu>
