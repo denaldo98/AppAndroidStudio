@@ -21,10 +21,10 @@ public class AdapterToDo extends RecyclerView.Adapter<AdapterToDo.CViewHolder> {
 
         CViewHolder(@NonNull View itemView) {
             super(itemView);
-            textNome = itemView.findViewById(R.id.textNome);
-            textData = itemView.findViewById(R.id.textData);
-            textDescrizione = itemView.findViewById(R.id.textDescrizione);
-            immaginePriorita = itemView.findViewById(R.id.immaginePriorita);
+            textNome = itemView.findViewById(R.id.textToDoNome);
+            textData = itemView.findViewById(R.id.textToDoData);
+            textDescrizione = itemView.findViewById(R.id.textToDoDescrizione);
+            immaginePriorita = itemView.findViewById(R.id.immagineToDoPriorita);
         }
     }
 

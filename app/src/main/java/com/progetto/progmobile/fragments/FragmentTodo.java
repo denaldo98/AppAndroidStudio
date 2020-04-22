@@ -39,7 +39,7 @@ public class FragmentTodo extends Fragment {
         adapterToDo = new AdapterToDo(attivitaTutte);
         recyclerView.setAdapter(adapterToDo);
 
-        btnAdd = view.findViewById(R.id.button_add);
+        btnAdd = view.findViewById(R.id.button_add_to_do);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
