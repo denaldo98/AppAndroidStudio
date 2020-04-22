@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     Animation topAnim, bottomAnim;
     ImageView image;
     TextView logo, slogan;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         logo.setAnimation(bottomAnim); //le due text view entrano dal basso
         slogan.setAnimation(bottomAnim);
 
-        new Handler().postDelayed(new Runnable() {    //handler per far partire la dashboard activity dopo i 5 secondi
+        new Handler().postDelayed(new Runnable() {    //handler per far partire la HomeActivity dopo 5 secondi
             @Override
             public void run() {
                 Intent intent = new Intent(MainActivity.this, HomeActivity.class );
@@ -56,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent, options.toBundle()); //gli options portano le animations degli elementi della login activity */
             }
         }, SPLASH_SCREEN);
-
 
     }
 }

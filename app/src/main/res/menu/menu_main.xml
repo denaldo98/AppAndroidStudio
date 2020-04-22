@@ -8,16 +8,10 @@
         android:title="Impostazioni">
     </item>
     <item
-        android:id="@+id/menuLogout"
-        android:icon="@drawable/ic_power_settings_new_black_24dp"
+        android:id="@+id/menuContattaci"
+        android:icon="@drawable/ic_email_black_24dp"
         app:showAsAction="never"
-        android:title="Logout">
-    </item>
-    <item
-        android:id="@+id/menuPrivacy"
-        android:icon="@drawable/ic_security_black_24dp"
-        app:showAsAction="never"
-        android:title="Privacy">
+        android:title="Contattaci">
     </item>
     <item
         android:id="@+id/menuFaq"
@@ -25,5 +19,18 @@
         app:showAsAction="never"
         android:title="Faq">
     </item>
+    <item
+        android:id="@+id/menuPrivacy"
+        android:icon="@drawable/ic_security_black_24dp"
+        app:showAsAction="never"
+        android:title="Informativa Privacy">
+    </item>
+    <item
+        android:id="@+id/menuLogout"
+        android:icon="@drawable/ic_power_settings_new_black_24dp"
+        app:showAsAction="never"
+        android:title="Logout">
+    </item>
+
 
 </menu>
