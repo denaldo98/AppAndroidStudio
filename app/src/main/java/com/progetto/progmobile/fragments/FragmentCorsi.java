@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class FragmentCorsi extends Fragment {
+    private RecyclerView recyclerView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,8 +27,7 @@ public class FragmentCorsi extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_corsi, container, false);
 
-        return view;
+        return inflater.inflate(R.layout.fragment_corsi, container, false);
     }
 }
