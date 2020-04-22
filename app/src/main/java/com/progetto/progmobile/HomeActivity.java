@@ -6,8 +6,8 @@ import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,6 +19,9 @@ import com.progetto.progmobile.fragments.FragmentAppelli;
 import com.progetto.progmobile.fragments.FragmentCorsi;
 import com.progetto.progmobile.fragments.FragmentOrario;
 import com.progetto.progmobile.fragments.FragmentTodo;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -89,18 +92,31 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-    // Menu icons are inflated just as they were with actionbar
-    @SuppressLint("RestrictedApi")
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
-        if(menu instanceof MenuBuilder){
-            MenuBuilder m = (MenuBuilder) menu;
-            //noinspection RestrictedApi
-            m.setOptionalIconsVisible(true);
+
+        //rendo le icone visibili nel OverFlow menu
+        if(menu.getClass().getSimpleName().equals("MenuBuilder")){
+
+            Method m = null;
+            try {
+                m = menu.getClass().getDeclaredMethod(
+                        "setOptionalIconsVisible", Boolean.TYPE);
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            }
+            assert m != null;
+            m.setAccessible(true);
+            try {
+                m.invoke(menu, true);
+            } catch (IllegalAccessException | InvocationTargetException e) {
+                e.printStackTrace();
+            }
         }
+
         return true;
     }
 }

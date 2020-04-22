@@ -4,31 +4,31 @@
     <item
         android:id="@+id/menuSettings"
         android:icon="@drawable/ic_settings_black_24dp"
-        app:showAsAction="never"
+        app:showAsAction="withText"
         android:title="Impostazioni">
     </item>
     <item
         android:id="@+id/menuContattaci"
         android:icon="@drawable/ic_email_black_24dp"
-        app:showAsAction="never"
+        app:showAsAction="withText"
         android:title="Contattaci">
     </item>
     <item
         android:id="@+id/menuFaq"
         android:icon="@drawable/ic_help_black_24dp"
-        app:showAsAction="never"
+        app:showAsAction="withText"
         android:title="Faq">
     </item>
     <item
         android:id="@+id/menuPrivacy"
         android:icon="@drawable/ic_security_black_24dp"
-        app:showAsAction="never"
+        app:showAsAction="withText"
         android:title="Informativa Privacy">
     </item>
     <item
         android:id="@+id/menuLogout"
         android:icon="@drawable/ic_power_settings_new_black_24dp"
-        app:showAsAction="never"
+        app:showAsAction="withText"
         android:title="Logout">
     </item>
 
