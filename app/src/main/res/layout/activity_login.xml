@@ -32,9 +32,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:fontFamily="serif"
-        android:text="Sign in to continue"
-        android:textSize="18sp"
-        android:transitionName="logo_desc" />
+        android:text="Accedi per continuare"
+        android:textSize="18sp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -46,12 +45,11 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/username"
-                android:hint="Username"
-                android:transitionName="username_tran"
+                android:hint="Email"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/login_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -60,23 +58,23 @@
             <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/password"
             android:hint="Password"
             app:passwordToggleEnabled="true"
-            android:transitionName="password_tran"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/login_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
             <Button
+                android:id="@+id/btn_forget"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:background="#00000000"
-                android:text="Forget Password?"
+                android:text="Password dimenticata?"
                 android:layout_gravity="end"
                 android:elevation="0dp"
                 android:layout_margin="5dp"/>
@@ -88,21 +86,19 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:background="#000"
-                android:text="GO"
-                android:textColor="#fff"
-                android:transitionName="button_tran" />
+                android:text="Entra"
+                android:textColor="#fff"/>
 
             <Button
                 android:id="@+id/btn_signup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#00000000"
-                android:text="New User? SIGN UP"
+                android:text="Nuovo utente? Registrati"
                 android:layout_gravity="end"
                 android:elevation="0dp"
                 android:layout_margin="5dp"
-                android:textColor="#000"
-                android:transitionName="login_signup_tran"/>
+                android:textColor="#000"/>
 
     </LinearLayout>
 

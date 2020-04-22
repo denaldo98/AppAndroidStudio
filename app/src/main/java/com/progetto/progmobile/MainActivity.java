@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Pair;
@@ -14,6 +15,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final int SPLASH_SCREEN = 5000;
@@ -22,12 +26,12 @@ public class MainActivity extends AppCompatActivity {
     Animation topAnim, bottomAnim;
     ImageView image;
     TextView logo, slogan;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //tolgo la ActionBar
-        //getSupportActionBar().hide();
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); //per togliere la status bar
         setContentView(R.layout.activity_main);
 
@@ -44,17 +48,18 @@ public class MainActivity extends AppCompatActivity {
         logo.setAnimation(bottomAnim); //le due text view entrano dal basso
         slogan.setAnimation(bottomAnim);
 
-        new Handler().postDelayed(new Runnable() {    //handler per far partire la HomeActivity dopo 5 secondi
+        new Handler().postDelayed(new Runnable() {    //handler per far partire la HomeActivity/SignUp Activity dopo 5 secondi
             @Override
             public void run() {
-                Intent intent = new Intent(MainActivity.this, HomeActivity.class );
+                Intent intent = null;
+                SharedPreferences preferences = getSharedPreferences("login", MODE_PRIVATE);
+                if(preferences.getBoolean("firstrun", true)) {
+                    intent = new Intent(MainActivity.this, SignUp.class);
+                } else {
+                    intent = new Intent(MainActivity.this, HomeActivity.class);
+                }
                 startActivity(intent);
-                finish();
-                /*Pair[] pairs = new Pair[2];
-                pairs[0] = new Pair<View, String>(image, "logo_image");
-                pairs[1] = new Pair<View, String>(logo, "logo_text");
-                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,pairs);
-                startActivity(intent, options.toBundle()); //gli options portano le animations degli elementi della login activity */
+                finish(); //distruggo l'activity per rimuoverla dallo stack
             }
         }, SPLASH_SCREEN);
 

@@ -6,6 +6,8 @@ import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -50,13 +52,18 @@ public class HomeActivity extends AppCompatActivity {
         // Get access to the custom title view
         final TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
 
-
-
         //instanziamo prima di tutto i fragment
         fragmentTodo = new FragmentTodo();
         fragmentAppelli = new FragmentAppelli();
         fragmentCorsi = new FragmentCorsi();
         fragmentOrario = new FragmentOrario();
+        //Se entro nella HomeActivity, allora sono un utente registrato, quindi aggiorno le sharedpreferences per mantenere la registrazione
+        SharedPreferences preferences = getSharedPreferences("login", MODE_PRIVATE);
+        if(preferences.getBoolean("firstrun", true)) {
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("firstrun", false);
+            editor.apply();
+        }
 
         //gestione BottomNavigationBar
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragmentTodo).commit(); //predispongo il Fragment iniziale
