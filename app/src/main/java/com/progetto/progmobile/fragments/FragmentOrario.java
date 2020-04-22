@@ -1,26 +1,73 @@
 package com.progetto.progmobile.fragments;
 
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.fragment.app.Fragment;
-
+import com.google.android.material.tabs.TabItem;
+import com.google.android.material.tabs.TabLayout;
 import com.progetto.progmobile.R;
+import com.progetto.progmobile.fragments.tabsFragments.PageAdapter;
 
+/**
+ * A simple {@link Fragment} subclass.
+ */
 public class FragmentOrario extends Fragment {
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-}
+    public FragmentOrario() {
+        // Required empty public constructor
+    }
+
+    private TabLayout tablayout;
+    private ViewPager viewPager;
+    private TabItem tab1, tab2, tab3, tab4, tab5, tab6;
+    public PagerAdapter pagerAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_orario, container, false);
 
-        return view;
+        tablayout = (TabLayout) view.findViewById(R.id.tablayout);
+        tab1 = (TabItem ) view.findViewById(R.id.Tab1);
+        tab2 = (TabItem ) view.findViewById(R.id.Tab2);
+        tab3 = (TabItem ) view.findViewById(R.id.Tab3);
+        tab4 = (TabItem ) view.findViewById(R.id.Tab4);
+        tab5 = (TabItem ) view.findViewById(R.id.Tab5);
+        tab6 = (TabItem ) view.findViewById(R.id.Tab6);
+        viewPager = (ViewPager) view.findViewById(R.id.viewpager);
 
+        pagerAdapter = new PageAdapter(getFragmentManager(), tablayout.getTabCount());
+        viewPager.setAdapter(pagerAdapter);
+
+        tablayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tablayout));
+
+        return view;
     }
+
+
 }
