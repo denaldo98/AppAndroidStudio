@@ -13,9 +13,7 @@ import com.progetto.progmobile.entities.Attivita;
 
 import java.util.ArrayList;
 
-import com.progetto.progmobile.entities.Attivita;
-
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CViewHolder> {
+public class AdapterToDo extends RecyclerView.Adapter<AdapterToDo.CViewHolder> {
 
     class CViewHolder extends RecyclerView.ViewHolder {
         TextView textNome, textData, textDescrizione;
@@ -32,13 +30,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CViewHolder> {
 
     private ArrayList<Attivita> struttura;
 
-    public MyAdapter(ArrayList<Attivita> struttura) {
+    public AdapterToDo(ArrayList<Attivita> struttura) {
         this.struttura = struttura;
     }
 
     @Override
     public CViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.feed_row, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.riga_to_do, parent, false);
         return new CViewHolder(view);
     }
 

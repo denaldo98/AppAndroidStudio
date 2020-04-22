@@ -15,4 +15,23 @@ public class Corso {
         this.Appunti = Appunti;
     }
 
+    public String getNomeProfessore() {
+        return nomeProfessore;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public int getNumeroCFU() {
+        return numeroCFU;
+    }
+
+    public String getEmailProfessore() {
+        return emailProfessore;
+    }
+
+    public String[] getAppunti() {
+        return Appunti;
+    }
 }

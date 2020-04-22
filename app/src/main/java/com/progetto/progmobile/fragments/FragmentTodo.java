@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.progetto.progmobile.MyAdapter;
+import com.progetto.progmobile.AdapterToDo;
 import com.progetto.progmobile.R;
 import com.progetto.progmobile.entities.Attivita;
 
@@ -20,7 +20,7 @@ import java.util.Random;
 public class FragmentTodo extends Fragment {
 
     private RecyclerView recyclerView;
-    private MyAdapter myAdapter;
+    private AdapterToDo adapterToDo;
     private ArrayList<Attivita> attivitaTutte;
     private ImageButton btnAdd;
 
@@ -36,8 +36,8 @@ public class FragmentTodo extends Fragment {
 
         recyclerView = view.findViewById(R.id.recyclerviewToDo);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        myAdapter = new MyAdapter(attivitaTutte);
-        recyclerView.setAdapter(myAdapter);
+        adapterToDo = new AdapterToDo(attivitaTutte);
+        recyclerView.setAdapter(adapterToDo);
 
         btnAdd = view.findViewById(R.id.button_add);
         btnAdd.setOnClickListener(new View.OnClickListener() {
@@ -51,7 +51,7 @@ public class FragmentTodo extends Fragment {
                 Attivita attivita = new Attivita(nome, priorita, descrizione, data);
                 attivitaTutte.add(attivita);
 
-                myAdapter.notifyDataSetChanged();
+                adapterToDo.notifyDataSetChanged();
             }
         });
 
