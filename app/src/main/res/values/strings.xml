@@ -22,8 +22,8 @@
         <item>Descrizione 3</item>
         <item>Descrizione generica</item>
         <item>Descrizione generica</item>
-        <item>Descrizione genericaDescrizione genericaDescrizione genericaDescrizione genericaDescrizione genericaDescrizione genericaDescrizione genericaDescrizione genericaDescrizione generica
-        Descrizione genericaDescrizione genericaDescrizione genericaDescrizione genericaDescrizione genericaDescrizione genericaDescrizione generica</item>
+        <item>Descrizione genericaDescrizione xgenericaDescrizione agenericaDescrizione bgenericaDescrizione cgenericaDescrizione dgenericaDescrizione geneericaDescrizione generficaDescrizione generica
+        Descrizione genericaDescrizqione genericaDescriazione generficaDescrizione genericaDsdescrizione genericaDesfcrizione genericaDescrizione generica</item>
 
     </string-array>
     <integer-array name="priorita">
@@ -34,11 +34,19 @@
         <item>1</item>
         <item>1</item>
     </integer-array>
+    //Stringhe corsi
     <string name="numero_CFU">CFU: </string>
     <string name="nome_professore">Professore: </string>
     <string name="email_professore">Email: </string>
     <string name="appunti">Appunti</string>
     <string name="descrizione_immagine">Immagine generica</string>
+
+    //Stringhe To do
+    <string name="nome_attivita">Nome attività</string>
+    <string name="descrizione_attivita">Descrizione</string>
+    <string name="priorita_attivita">Priorità</string>
+    <string name="scadenza_attivita">Scadenza</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
