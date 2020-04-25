@@ -24,6 +24,7 @@ import com.progetto.progmobile.fragments.FragmentTodo;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Objects;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -34,6 +35,8 @@ public class HomeActivity extends AppCompatActivity {
     private FragmentAppelli fragmentAppelli;
     private FragmentCorsi fragmentCorsi;
     private FragmentOrario fragmentOrario;
+
+    //FRAGMENT PER Impostazioni
 
 
 
@@ -48,7 +51,7 @@ public class HomeActivity extends AppCompatActivity {
         // Make sure the toolbar exists in the activity and is not null
         setSupportActionBar(toolbar);
         // Remove default title text
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
         // Get access to the custom title view
         final TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
 
@@ -57,6 +60,7 @@ public class HomeActivity extends AppCompatActivity {
         fragmentAppelli = new FragmentAppelli();
         fragmentCorsi = new FragmentCorsi();
         fragmentOrario = new FragmentOrario();
+
         //Se entro nella HomeActivity, allora sono un utente registrato, quindi aggiorno le sharedpreferences per mantenere la registrazione
         SharedPreferences preferences = getSharedPreferences("login", MODE_PRIVATE);
         if(preferences.getBoolean("firstrun", true)) {
@@ -65,11 +69,12 @@ public class HomeActivity extends AppCompatActivity {
             editor.apply();
         }
 
-        //gestione BottomNavigationBar
+
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragmentTodo).commit(); //predispongo il Fragment iniziale
 
         bottomNav = findViewById(R.id.bottom_nav);
 
+        //gestione BottomNavigationBar
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -126,6 +131,33 @@ public class HomeActivity extends AppCompatActivity {
 
         return true;
     }
+
+        //gestione OverFlow menu
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+        switch (item.getItemId()) {
+            case R.id.menuSettings:
+                Toast.makeText(getApplicationContext(), "MenuSettings",Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.menuFaq:
+                Toast.makeText(getApplicationContext(), "MenuFaq",Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.menuContattaci:
+                Toast.makeText(getApplicationContext(), "MenuContattaci",Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.menuPrivacy:
+                Toast.makeText(getApplicationContext(), "MenuPrivacy",Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.menuLogout:
+                Toast.makeText(getApplicationContext(), "MenuLogout",Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
 }
 
 
