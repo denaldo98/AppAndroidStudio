@@ -51,7 +51,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/login_email"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"/>
 
             </com.google.android.material.textfield.TextInputLayout>
         
@@ -100,7 +101,16 @@
                 android:layout_margin="5dp"
                 android:textColor="#000"/>
 
+
     </LinearLayout>
+
+    <!-- ProgressBar for Loading Time -->
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_gravity="center"/>
 
 
 </LinearLayout>
