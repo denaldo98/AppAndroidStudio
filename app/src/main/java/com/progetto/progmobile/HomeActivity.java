@@ -2,21 +2,20 @@ package com.progetto.progmobile;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.progetto.progmobile.fragments.FragmentAppelli;
 import com.progetto.progmobile.fragments.FragmentCorsi;
 import com.progetto.progmobile.fragments.FragmentOrario;
@@ -36,7 +35,10 @@ public class HomeActivity extends AppCompatActivity {
     private FragmentCorsi fragmentCorsi;
     private FragmentOrario fragmentOrario;
 
-    //FRAGMENT PER Impostazioni
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener authStateListener;
+
+
 
 
 
@@ -150,11 +152,14 @@ public class HomeActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "MenuPrivacy",Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.menuLogout:
-                Toast.makeText(getApplicationContext(), "MenuLogout",Toast.LENGTH_SHORT).show();
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(HomeActivity.this, Login.class);
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+
     }
 
 

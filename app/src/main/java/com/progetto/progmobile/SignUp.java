@@ -26,7 +26,6 @@ import java.util.Map;
 public class SignUp extends AppCompatActivity {
 
     private TextInputEditText regName, regSurname, regEmail, regPassword, regConfirmPassword;
-    private Button regBtn, regToLoginBtn;
 
     private FirebaseAuth mAuth;
 
@@ -45,8 +44,9 @@ public class SignUp extends AppCompatActivity {
         regEmail = findViewById(R.id.reg_email);
         regPassword = findViewById(R.id.reg_password);
         regConfirmPassword = findViewById(R.id.reg_confpassword);
-        regBtn = findViewById(R.id.reg_btn);
-        regToLoginBtn = findViewById(R.id.reg_login_btn);
+
+        Button regBtn = findViewById(R.id.reg_btn);
+        Button regToLoginBtn = findViewById(R.id.reg_login_btn);
 
         regToLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +56,7 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
-        //Registrazione con email e password
+        //Registrazione Firebase con email e password
         regBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
