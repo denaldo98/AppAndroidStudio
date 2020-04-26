@@ -142,6 +142,14 @@ public class SignUp extends AppCompatActivity {
         });
     }
 
+
+
+     /*@Override
+    protected void onResume() {
+        super.onResume();
+        progressBar.setVisibility(View.GONE);
+    }*/
+
     /*private void writeUserToDb(String nome, String cognome, String uid) {
         Map<String, Object> user = new HashMap<>();
         user.put("nome", nome);

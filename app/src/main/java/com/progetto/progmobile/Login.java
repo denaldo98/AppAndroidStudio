@@ -78,8 +78,6 @@ public class Login extends AppCompatActivity {
 
 
          private void loginUserAccount() {
-             // show the visibility of progress bar to show loading
-             progressBar.setVisibility(View.VISIBLE);
 
              // Take the value of two edit texts in Strings
              String userEmail = email.getText().toString();
@@ -87,14 +85,15 @@ public class Login extends AppCompatActivity {
 
              if (TextUtils.isEmpty(userEmail) && (TextUtils.isEmpty(userPassword))) {
                  Toast.makeText(getApplicationContext(), "Empty fields", Toast.LENGTH_LONG).show();
-                 progressBar.setVisibility(View.GONE);  // hide the progress bar
              } else if (TextUtils.isEmpty(userEmail)) {
                  Toast.makeText(getApplicationContext(), "Please enter email!!", Toast.LENGTH_LONG).show();
-                 progressBar.setVisibility(View.GONE);  // hide the progress bar
              } else if (TextUtils.isEmpty(userPassword)) {
                  Toast.makeText(getApplicationContext(), "Please enter password!!", Toast.LENGTH_LONG).show();
-                 progressBar.setVisibility(View.GONE);  // hide the progress bar
              } else {
+
+                 // show the visibility of progress bar to show loading
+                 progressBar.setVisibility(View.VISIBLE);
+
                  // signin existing user
                  mAuth.signInWithEmailAndPassword(userEmail, userPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                      @Override
@@ -120,7 +119,7 @@ public class Login extends AppCompatActivity {
 
 
 
-
+   
 
 
    /*@Override
