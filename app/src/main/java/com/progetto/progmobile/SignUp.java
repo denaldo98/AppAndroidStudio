@@ -73,8 +73,8 @@ public class SignUp extends AppCompatActivity {
     {
 
         // Take the value of edit texts in Strings
-        final String nome = regName.getText().toString();
-        final String cognome = regSurname.getText().toString();
+        String nome = regName.getText().toString();
+        String cognome = regSurname.getText().toString();
         String email = regEmail.getText().toString();
         String password = regPassword.getText().toString();
 
