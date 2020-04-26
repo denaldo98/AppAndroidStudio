@@ -95,6 +95,10 @@ public class SignUp extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please enter password!!", Toast.LENGTH_LONG).show();
             return;
         }
+        if (password.length() < 6) {
+            Toast.makeText(getApplicationContext(), "Password too short, enter minimum 6 characters!", Toast.LENGTH_LONG).show();
+            return;
+        }
         if (!(regPassword.getText().toString().equals(regConfirmPassword.getText().toString()))) {
             Toast.makeText(SignUp.this, "Le password non coincidono.", Toast.LENGTH_SHORT).show();
             return;
