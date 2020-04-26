@@ -125,18 +125,11 @@ public class Login extends AppCompatActivity {
              }
          }
 
-
-
-
-
-
    /*@Override
     protected void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(authStateListener);
     }*/
-
-
 
 }
 
