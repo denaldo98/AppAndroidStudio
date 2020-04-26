@@ -65,9 +65,9 @@ public class HomeActivity extends AppCompatActivity {
 
         //Se entro nella HomeActivity, allora sono un utente registrato, quindi aggiorno le sharedpreferences per mantenere la registrazione
         SharedPreferences preferences = getSharedPreferences("login", MODE_PRIVATE);
-        if(preferences.getBoolean("firstrun", true)) {
+        if(preferences.getBoolean("autoLogin", true)) {
             SharedPreferences.Editor editor = preferences.edit();
-            editor.putBoolean("firstrun", false);
+            editor.putBoolean("autoLogin", false);
             editor.apply();
         }
 
@@ -153,6 +153,12 @@ public class HomeActivity extends AppCompatActivity {
                 return true;
             case R.id.menuLogout:
                 FirebaseAuth.getInstance().signOut();
+
+                SharedPreferences preferences = getSharedPreferences("login", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putBoolean("autoLogin", true);
+                    editor.apply();
+
                 Intent intent = new Intent(HomeActivity.this, Login.class);
                 startActivity(intent);
                 return true;

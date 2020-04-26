@@ -79,7 +79,7 @@ public class Login extends AppCompatActivity {
                 } else if (userEmail.isEmpty()) {
                     email.setError("Provide your Email first!");
                     email.requestFocus();
-                } else {
+                } else if (!(userEmail.isEmpty() && userPassword.isEmpty())){
                     mAuth.signInWithEmailAndPassword(userEmail, userPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -91,6 +91,8 @@ public class Login extends AppCompatActivity {
                             }
                         }
                 });
+                } else {
+                    Toast.makeText(Login.this, "Error", Toast.LENGTH_SHORT).show();;
                 }
             }
         });

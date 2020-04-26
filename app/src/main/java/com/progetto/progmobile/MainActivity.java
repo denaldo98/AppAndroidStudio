@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 Intent intent = null;
                 SharedPreferences preferences = getSharedPreferences("login", MODE_PRIVATE);
-                if(preferences.getBoolean("firstrun", true)) {
+                if(preferences.getBoolean("autoLogin", true)) {
                     intent = new Intent(MainActivity.this, SignUp.class);
                 } else {
                     intent = new Intent(MainActivity.this, HomeActivity.class);
