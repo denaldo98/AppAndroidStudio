@@ -71,7 +71,6 @@ public class SignUp extends AppCompatActivity {
 
     private void registerNewUser()
     {
-        progressBar.setVisibility(View.VISIBLE); // show the visibility of progress bar to show loading
 
         // Take the value of edit texts in Strings
         final String nome = regName.getText().toString();
@@ -82,31 +81,28 @@ public class SignUp extends AppCompatActivity {
         // Validations for input name, surname, email and password
         if(TextUtils.isEmpty(nome)) {
             Toast.makeText(getApplicationContext(), "Please enter name!!", Toast.LENGTH_LONG).show();
-            progressBar.setVisibility(View.GONE); // hide the progress bar
             return;
         }
         if(TextUtils.isEmpty(cognome)) {
             Toast.makeText(getApplicationContext(), "Please enter surname!!", Toast.LENGTH_LONG).show();
-            progressBar.setVisibility(View.GONE); // hide the progress bar
             return;
         }
         if(TextUtils.isEmpty(email)) {
             Toast.makeText(getApplicationContext(), "Please enter email!!", Toast.LENGTH_LONG).show();
-            progressBar.setVisibility(View.GONE); // hide the progress bar
             return;
         }
         if(TextUtils.isEmpty(password)) {
             Toast.makeText(getApplicationContext(), "Please enter password!!", Toast.LENGTH_LONG).show();
-            progressBar.setVisibility(View.GONE); // hide the progress bar
             return;
         }
         if (!(regPassword.getText().toString().equals(regConfirmPassword.getText().toString()))) {
             Toast.makeText(SignUp.this, "Le password non coincidono.", Toast.LENGTH_SHORT).show();
-            progressBar.setVisibility(View.GONE); // hide the progress bar
             return;
         }
 
-        // register new use
+        progressBar.setVisibility(View.VISIBLE); // show the visibility of progress bar to show loading
+
+        // create new user
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
