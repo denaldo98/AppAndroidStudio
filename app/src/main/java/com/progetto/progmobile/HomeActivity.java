@@ -11,11 +11,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.progetto.progmobile.fragments.FragmentAppelli;
 import com.progetto.progmobile.fragments.FragmentCorsi;
 import com.progetto.progmobile.fragments.FragmentOrario;
@@ -137,19 +135,24 @@ public class HomeActivity extends AppCompatActivity {
         //gestione OverFlow menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent = null;
         // Handle presses on the action bar items
         switch (item.getItemId()) {
             case R.id.menuSettings:
-                Toast.makeText(getApplicationContext(), "MenuSettings",Toast.LENGTH_SHORT).show();
+                intent = new Intent(HomeActivity.this, SettingsActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.menuFaq:
-                Toast.makeText(getApplicationContext(), "MenuFaq",Toast.LENGTH_SHORT).show();
+                intent = new Intent(HomeActivity.this, FaqActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.menuContattaci:
-                Toast.makeText(getApplicationContext(), "MenuContattaci",Toast.LENGTH_SHORT).show();
+                intent = new Intent(HomeActivity.this, ContactsActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.menuPrivacy:
-                Toast.makeText(getApplicationContext(), "MenuPrivacy",Toast.LENGTH_SHORT).show();
+                intent = new Intent(HomeActivity.this, PrivacyActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.menuLogout:
                 FirebaseAuth.getInstance().signOut();
@@ -159,7 +162,7 @@ public class HomeActivity extends AppCompatActivity {
                     editor.putBoolean("autoLogin", true);
                     editor.apply();
 
-                Intent intent = new Intent(HomeActivity.this, Login.class);
+                intent = new Intent(HomeActivity.this, Login.class);
                 startActivity(intent);
                 finish();
                 return true;
