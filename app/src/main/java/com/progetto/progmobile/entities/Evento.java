@@ -2,15 +2,21 @@ package com.progetto.progmobile.entities;
 
 public class Evento {
     private String nome;
-    private String ora;
+    private String giorno;
+    private String oraInizio;
+    private String oraFine;
 
-    public Evento(String nome, String ora) {
+    public Evento(String nome, String giorno, String oraInizio, String oraFine) {
         this.nome = nome;
-        this.ora = ora;
+        this.giorno = giorno;
+        this.oraInizio = oraInizio;
+        this.oraFine = oraFine;
     }
 
     public String getNome() {
         return nome;
     }
-    public String getOra() { return ora;}
+    public String getGiorno() { return giorno; }
+    public String getOraInizio() { return oraInizio; }
+    public String getOraFine() { return oraFine; }
 }
