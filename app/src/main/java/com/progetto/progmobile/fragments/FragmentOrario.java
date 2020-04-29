@@ -2,6 +2,7 @@ package com.progetto.progmobile.fragments;
 
 import android.os.Bundle;
 
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.PagerAdapter;
@@ -10,16 +11,22 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.progetto.progmobile.R;
+import com.progetto.progmobile.dialogs.FullScreenDialog;
 import com.progetto.progmobile.fragments.tabsFragments.PageAdapter;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class FragmentOrario extends Fragment {
+
+
 
     public FragmentOrario() {
         // Required empty public constructor
@@ -30,10 +37,33 @@ public class FragmentOrario extends Fragment {
     private TabItem tab1, tab2, tab3, tab4, tab5, tab6;
     public PagerAdapter pagerAdapter;
 
+    //bottone per aprire il dialog
+    private ImageButton btnAdd;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_orario, container, false);
+
+
+
+        //gestione bottoneAdd
+        btnAdd = view.findViewById(R.id.button_add_event);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment dialog = FullScreenDialog.newInstance();
+                dialog.show(getFragmentManager(), "tag");
+            }
+        });
+
+
 
         tablayout = (TabLayout) view.findViewById(R.id.tablayout);
         tab1 = (TabItem ) view.findViewById(R.id.Tab1);
