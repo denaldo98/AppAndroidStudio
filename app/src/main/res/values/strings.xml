@@ -46,8 +46,14 @@
     <string name="descrizione_attivita">Descrizione</string>
     <string name="priorita_attivita">Priorità</string>
     <string name="scadenza_attivita">Scadenza</string>
+    <string name="aggiungi">Aggiungi</string>
+    <string name="bassa">Bassa</string>
+    <string name="media">Media</string>
+    <string name="alta">Alta</string>
+
 
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="chiudi">chiudi</string>
 </resources>

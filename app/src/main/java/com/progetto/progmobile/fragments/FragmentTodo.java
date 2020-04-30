@@ -11,15 +11,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.progetto.progmobile.AdapterToDo;
-import com.progetto.progmobile.HomeActivity;
 import com.progetto.progmobile.R;
 import com.progetto.progmobile.dialogs.DialogToDoAdd;
 import com.progetto.progmobile.entities.Attivita;
 
 import java.util.ArrayList;
-import java.util.Random;
 
-public class FragmentTodo extends Fragment implements DialogToDoAdd.DialogToDoListener {
+public class FragmentTodo extends Fragment{
 
     private RecyclerView recyclerView;
     private AdapterToDo adapterToDo;
@@ -45,6 +43,37 @@ public class FragmentTodo extends Fragment implements DialogToDoAdd.DialogToDoLi
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DialogToDoAdd dialog = DialogToDoAdd.newInstance();
+                dialog.setCallback(new DialogToDoAdd.Callback() {
+                    @Override
+                    public void onAddClick(Attivita attivita) {
+                        attivitaTutte.add(attivita);
+                        adapterToDo.notifyDataSetChanged();
+                    }
+                });
+                assert getFragmentManager() != null;
+                dialog.show(getFragmentManager(), "tag");
+                /*
+                DialogToDoAddNuovo.Builder alert = new DialogToDoAddNuovo.Builder(getContext());
+                alert.setView(R.layout.dialog_to_do_add);
+                alert.setMessage("Nuova attività");
+                alert.setNegativeButton("Annulla", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                alert.setPositiveButton("Aggiungi" , new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+
+                    }
+                }) ;
+                alert.show();
+
+
+
 
                 String nome = randomString(15);
                 Random random = new Random();
@@ -55,9 +84,9 @@ public class FragmentTodo extends Fragment implements DialogToDoAdd.DialogToDoLi
 
                 //openToDoDialog();
                 Attivita attivita = new Attivita(nome, priorita, descrizione, data);
-                attivitaTutte.add(attivita);
+                attivitaTutte.add(attivita);*/
 
-                adapterToDo.notifyDataSetChanged();
+
             }
         });
 
@@ -72,16 +101,5 @@ public class FragmentTodo extends Fragment implements DialogToDoAdd.DialogToDoLi
             builder.append(ALPHA_NUMERIC_STRING.charAt(character));
         }
         return builder.toString();
-    }
-
-
-    private void openToDoDialog (){
-        DialogToDoAdd dialog = new DialogToDoAdd();
-        dialog.show(getActivity().getSupportFragmentManager(), "example dialog"); //Non va qui
-    }
-
-    @Override
-    public void applyTexts(String nome, String scadenza, String descrizione, String priorita) {
-
     }
 }

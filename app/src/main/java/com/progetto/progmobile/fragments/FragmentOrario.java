@@ -2,9 +2,7 @@ package com.progetto.progmobile.fragments;
 
 import android.os.Bundle;
 
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -16,10 +14,7 @@ import android.widget.ImageButton;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.progetto.progmobile.R;
-import com.progetto.progmobile.dialogs.FullScreenDialog;
 import com.progetto.progmobile.fragments.tabsFragments.PageAdapter;
-
-import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,8 +53,6 @@ public class FragmentOrario extends Fragment {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogFragment dialog = FullScreenDialog.newInstance();
-                dialog.show(getFragmentManager(), "tag");
             }
         });
 
