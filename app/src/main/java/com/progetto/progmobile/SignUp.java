@@ -69,12 +69,13 @@ public class SignUp extends AppCompatActivity {
         });
     }
 
+
     private void registerNewUser()
     {
 
         // Take the value of edit texts in Strings
-        String nome = regName.getText().toString();
-        String cognome = regSurname.getText().toString();
+        final String nome = regName.getText().toString();
+        final String cognome = regSurname.getText().toString();
         String email = regEmail.getText().toString();
         String password = regPassword.getText().toString();
 
@@ -111,31 +112,25 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(),"Registration successful!", Toast.LENGTH_LONG).show();
-
-                    progressBar.setVisibility(View.GONE); // hide the progress bar
-
-                    // if the user created intent to login activity
-                    Intent intent = new Intent(SignUp.this, HomeActivity.class);
-                    startActivity(intent);
-                    finish();
-                                    /*final FirebaseUser user = mAuth.getCurrentUser();
+                       final FirebaseUser user = mAuth.getCurrentUser();
                                     UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
                                             .setDisplayName(nome + " " + cognome).build();
                                     user.updateProfile(profileChangeRequest).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
-                                            writeUserToDb(nome, cognome, user.getUid());
+                                            writeUserToDb(nome, cognome, user.getUid());   //Scriviamo le informazioni dell'utente (nome cognome) nel db firestore per identificare quell'utente: aggiungiamo un documento per il nostro utente
+
+                                            Toast.makeText(getApplicationContext(),"Registration successful!", Toast.LENGTH_LONG).show();
+
+                                             progressBar.setVisibility(View.GONE); // hide the progress bar
                                             Intent intent = new Intent(SignUp.this, HomeActivity.class);
                                             startActivity(intent);
                                             finish();
                                         }
-                                    }); */
+                                    });
                 } else {
-
                     //Registration failed
                     Toast.makeText(getApplicationContext(), "Registration failed!!", Toast.LENGTH_LONG).show();
-
                     progressBar.setVisibility(View.GONE); // hide the progress bar
                 }
             }
@@ -150,12 +145,12 @@ public class SignUp extends AppCompatActivity {
         progressBar.setVisibility(View.GONE);
     }*/
 
-    /*private void writeUserToDb(String nome, String cognome, String uid) {
+    private void writeUserToDb(String nome, String cognome, String uid) {
         Map<String, Object> user = new HashMap<>();
         user.put("nome", nome);
         user.put("cognome", cognome);
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("utenti").document(uid).set(user);
-    }*/
+        FirebaseFirestore db = FirebaseFirestore.getInstance();   //otteniamo un istanza del nostro db
+        db.collection("utenti").document(uid).set(user);   //il document è l'utente che è identificato da un uid da firebaseAuth; settiamo il documento
+    }
 }
