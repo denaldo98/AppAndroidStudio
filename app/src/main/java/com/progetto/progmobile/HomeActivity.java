@@ -69,11 +69,9 @@ public class HomeActivity extends AppCompatActivity {
             editor.apply();
         }
 
-
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragmentTodo).commit(); //predispongo il Fragment iniziale
 
         bottomNav = findViewById(R.id.bottom_nav);
-
         //gestione BottomNavigationBar
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -101,8 +99,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -132,7 +128,7 @@ public class HomeActivity extends AppCompatActivity {
         return true;
     }
 
-        //gestione OverFlow menu
+    //gestione OverFlow menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = null;
@@ -156,7 +152,7 @@ public class HomeActivity extends AppCompatActivity {
                 return true;
             case R.id.menuLogout:
                 FirebaseAuth.getInstance().signOut();
-
+                //cancello le sharedpreferences se faccio logout
                 SharedPreferences preferences = getSharedPreferences("login", MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putBoolean("autoLogin", true);
