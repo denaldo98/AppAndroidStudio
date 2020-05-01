@@ -56,6 +56,7 @@ public class FragmentOrario extends Fragment {
             @Override
             public void onClick(View v) {
                 DialogFragment dialog = FullScreenDialog.newInstance();
+                assert getFragmentManager() != null;
                 dialog.show(getFragmentManager(), "tag");
             }
         });
