@@ -53,40 +53,6 @@ public class FragmentTodo extends Fragment{
                 });
                 assert getFragmentManager() != null;
                 dialog.show(getFragmentManager(), "tag");
-                /*
-                DialogToDoAddNuovo.Builder alert = new DialogToDoAddNuovo.Builder(getContext());
-                alert.setView(R.layout.dialog_to_do_add);
-                alert.setMessage("Nuova attività");
-                alert.setNegativeButton("Annulla", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-                alert.setPositiveButton("Aggiungi" , new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-
-                    }
-                }) ;
-                alert.show();
-
-
-
-
-                String nome = randomString(15);
-                Random random = new Random();
-                int priorita = random.nextInt(3)+1;
-                String descrizione = randomString(90);
-                String data = "11/1/21";
-
-
-                //openToDoDialog();
-                Attivita attivita = new Attivita(nome, priorita, descrizione, data);
-                attivitaTutte.add(attivita);*/
-
-
             }
         });
 

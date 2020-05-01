@@ -43,7 +43,7 @@ public class AdapterToDo extends RecyclerView.Adapter<AdapterToDo.CViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull CViewHolder holder, int position) {
         holder.textNome.setText(struttura.get(position).getNome());
-        holder.textData.setText(struttura.get(position).getData()+"");
+        holder.textData.setText(struttura.get(position).getData());
         holder.textDescrizione.setText(struttura.get(position).getDescrizione());
         switch (struttura.get(position).getPriorita()){
             case 1 : holder.immaginePriorita.setImageResource(R.drawable.verde); break;
