@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.progetto.progmobile.AdapterToDo;
+//import com.progetto.progmobile.AdapterToDo;
 import com.progetto.progmobile.R;
 import com.progetto.progmobile.entities.Attivita;
 
