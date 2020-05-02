@@ -8,12 +8,22 @@ import androidx.fragment.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.progetto.progmobile.entities.Attivita;
 import com.progetto.progmobile.fragments.FragmentAppelli;
 import com.progetto.progmobile.fragments.FragmentCorsi;
 import com.progetto.progmobile.fragments.FragmentOrario;
@@ -21,6 +31,9 @@ import com.progetto.progmobile.fragments.FragmentTodo;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class HomeActivity extends AppCompatActivity {
@@ -35,6 +48,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
+    public static ArrayList<Attivita> attivitaTutte = new ArrayList<>(); //Arraylist contenente le attività della ToDo
 
 
 
@@ -43,7 +57,45 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mAuth = FirebaseAuth.getInstance();
         setContentView(R.layout.activity_home);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        //final DocumentReference documentReference = db.collection("utenti").document(user.getUid()).collection("ToDo").document("Attivita1");
+        //documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        db.collection("utenti").document(user.getUid()).collection("ToDo").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Log.d("Tag", "Il valore è: " + String.valueOf(document.getData()));
+                        Attivita nuovaAttivita = new Attivita (document.getData().get("nome").toString(),1,document.getData().get("descrizione").toString(),document.getData().get("priorita").toString());
+                        attivitaTutte.add(nuovaAttivita);
+
+                    }/*
+                    if(documentSnapshot.exists()){
+                        Log.d("Tag 1","Prova document snapshot:"+documentSnapshot.getData());
+                        Map<String, Object> mappa = new HashMap<>();
+                        mappa = documentSnapshot.getData();
+                        Map<String, String> mappa2 = new HashMap<>(); //manca iteratore
+                        mappa2 = (Map<String, String>) mappa.get("Giovanni");
+                        Log.d("Tag 1","Prova document snapshot:"+mappa2);
+                        String nome =mappa2.get("nome").toString();
+                        Log.d("Tag 1","Prova nome: "+nome);
+                        //int priorita = Integer.parseInt(mappa2.get("priorita").toString());
+                        //Log.d("Tag 1","Priorita : "+priorita);
+                        Attivita attivita = new Attivita (nome,1,mappa2.get("descrizione").toString(),mappa2.get("data").toString());
+                        attivitaTutte.add(attivita);
+                        }
+                    else {
+                        Log.e("Tag 1","Documento non esistente");
+                        }*/
+                    }
+                else {
+                    Toast.makeText(getApplicationContext(),"Task not successful",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
         // Find the toolbar view inside the activity layout
         Toolbar toolbar = findViewById(R.id.toolbar);

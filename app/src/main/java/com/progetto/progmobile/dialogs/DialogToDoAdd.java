@@ -14,20 +14,23 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.progetto.progmobile.HomeActivity;
 import com.progetto.progmobile.R;
 import com.progetto.progmobile.entities.Attivita;
+import com.progetto.progmobile.fragments.FragmentTodo;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class DialogToDoAdd extends DialogFragment implements View.OnClickListener{
-    private Callback callback;
     private EditText nomeAttivita, descrizioneAttivita, scadenzaAttivita;
     private RadioGroup prioritaGroup;
     private String nome;
 
     public static DialogToDoAdd newInstance(){
         return new DialogToDoAdd();
-    }
-    public void setCallback(Callback callback){
-        this.callback = callback;
     }
 
     @Override
@@ -39,7 +42,7 @@ public class DialogToDoAdd extends DialogFragment implements View.OnClickListene
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.dialog_to_do_add, container, false);
+        View view = inflater.inflate(R.layout.dialog_to_do_add_nuovo, container, false);
         ImageButton chiudi = view.findViewById(R.id.dialogToDoChiudi);
         nomeAttivita = view.findViewById(R.id.dialogToDoNome);
         descrizioneAttivita = view.findViewById(R.id.dialogToDoDescrizione);
@@ -67,12 +70,16 @@ public class DialogToDoAdd extends DialogFragment implements View.OnClickListene
 
                 }
                 Attivita attivita = new Attivita(nomeAttivita.getText().toString(), valorePriorita ,descrizioneAttivita.getText().toString(),scadenzaAttivita.getText().toString());
-                callback.onAddClick(attivita);
+                HomeActivity.attivitaTutte.add(attivita);
+                FragmentTodo.adapterToDo.notifyDataSetChanged();
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                Map<String,Object> attivitaAggiunta = new HashMap<>();
+                attivitaAggiunta.put(attivita.getNome(), attivita);
+                db.collection("ToDo").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(attivitaAggiunta);
+
+                //aggiungi sul db
                 dismiss();
                 break;
         }
-    }
-    public interface Callback {
-        void onAddClick(Attivita attivita);
     }
 }

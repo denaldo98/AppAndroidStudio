@@ -22,7 +22,7 @@
             android:layout_height="match_parent">
 
             <ImageButton
-                android:id="@+id/fullscreen_dialog_close"
+                android:id="@+id/dialogToDoChiudi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -36,13 +36,13 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="8dp"
-                android:layout_toEndOf="@id/fullscreen_dialog_close"
+                android:layout_toEndOf="@id/dialogToDoChiudi"
                 android:text="Inserimento evento"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
             <Button
-                android:id="@+id/fullscreen_dialog_action"
+                android:id="@+id/dialogToDoButtonAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -66,7 +66,7 @@
         android:layout_marginTop="15dp">
 
         <EditText
-            android:id="@+id/text_evento"
+            android:id="@+id/dialogToDoNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -83,7 +83,7 @@
             android:layout_marginEnd="16dp"
             android:hint="Luogo/Aula"
             android:textSize="16sp"
-            app:layout_constraintTop_toBottomOf="@+id/text_evento" />
+            app:layout_constraintTop_toBottomOf="@+id/dialogToDoNome" />
 
         <LinearLayout
             android:id="@+id/linearLayout"

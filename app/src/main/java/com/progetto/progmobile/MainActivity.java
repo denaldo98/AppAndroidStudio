@@ -17,6 +17,10 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.progetto.progmobile.entities.Attivita;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 

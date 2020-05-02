@@ -50,10 +50,13 @@
     <string name="bassa">Bassa</string>
     <string name="media">Media</string>
     <string name="alta">Alta</string>
+    <string name="inserimentoAttivita">Inserimento attività</string>
 
 
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="chiudi">chiudi</string>
+    <string name="indietro">Indietro</string>
+    <string name="conferma">CONFERMA</string>
 </resources>

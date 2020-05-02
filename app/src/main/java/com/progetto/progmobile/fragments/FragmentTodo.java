@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.progetto.progmobile.AdapterToDo;
+import com.progetto.progmobile.HomeActivity;
+import com.progetto.progmobile.MainActivity;
 import com.progetto.progmobile.R;
 import com.progetto.progmobile.dialogs.DialogToDoAdd;
 import com.progetto.progmobile.entities.Attivita;
@@ -20,13 +22,11 @@ import java.util.ArrayList;
 public class FragmentTodo extends Fragment{
 
     private RecyclerView recyclerView;
-    private AdapterToDo adapterToDo;
-    private ArrayList<Attivita> attivitaTutte;
+    public static AdapterToDo adapterToDo;
     private ImageButton btnAdd;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        attivitaTutte = new ArrayList<>();
         super.onCreate(savedInstanceState);
     }
 
@@ -36,21 +36,15 @@ public class FragmentTodo extends Fragment{
 
         recyclerView = view.findViewById(R.id.recyclerviewToDo);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapterToDo = new AdapterToDo(attivitaTutte);
+        adapterToDo = new AdapterToDo(HomeActivity.attivitaTutte);
         recyclerView.setAdapter(adapterToDo);
 
         btnAdd = view.findViewById(R.id.button_add_to_do);
+        adapterToDo.notifyDataSetChanged();
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DialogToDoAdd dialog = DialogToDoAdd.newInstance();
-                dialog.setCallback(new DialogToDoAdd.Callback() {
-                    @Override
-                    public void onAddClick(Attivita attivita) {
-                        attivitaTutte.add(attivita);
-                        adapterToDo.notifyDataSetChanged();
-                    }
-                });
                 assert getFragmentManager() != null;
                 dialog.show(getFragmentManager(), "tag");
             }

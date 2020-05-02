@@ -54,6 +54,8 @@ public class AdapterToDo extends RecyclerView.Adapter<AdapterToDo.CViewHolder> {
 
     @Override
     public int getItemCount() {
+        if(struttura!=null)
         return struttura.size();
+        else return 0;
     }
 }
