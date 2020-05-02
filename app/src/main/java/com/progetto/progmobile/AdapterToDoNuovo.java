@@ -38,6 +38,13 @@ public class AdapterToDoNuovo extends FirestoreRecyclerAdapter<Attivita, Adapter
         return new ToDoHolder(v);
     }
 
+    public void deleteItem(int position) {
+        // getSnapshots returns all the document snapshots; getSnapshot returns dhe particular item on this position
+        getSnapshots().getSnapshot(position).getReference().delete();
+    }
+
+
+
     class ToDoHolder extends RecyclerView.ViewHolder {
         TextView textNome, textData, textDescrizione;
         ImageView immaginePriorita;
