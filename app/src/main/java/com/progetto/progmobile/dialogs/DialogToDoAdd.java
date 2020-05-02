@@ -1,4 +1,4 @@
-/*package com.progetto.progmobile.dialogs;
+package com.progetto.progmobile.dialogs;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,12 +9,15 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.progetto.progmobile.HomeActivity;
 import com.progetto.progmobile.R;
@@ -49,10 +52,13 @@ public class DialogToDoAdd extends DialogFragment implements View.OnClickListene
         scadenzaAttivita = view.findViewById(R.id.dialogToDoScadenza);
         Button aggiungi = view.findViewById(R.id.dialogToDoButtonAdd);
         prioritaGroup = view.findViewById(R.id.dialogToDoPrioritaGroup);
+
         chiudi.setOnClickListener(this);
         aggiungi.setOnClickListener(this);
+
         return view;
     }
+
 
     @Override
     public void onClick(View v) {
@@ -69,18 +75,20 @@ public class DialogToDoAdd extends DialogFragment implements View.OnClickListene
                     default : valorePriorita = 3; break;
 
                 }
-                Attivita attivita = new Attivita(nomeAttivita.getText().toString(), valorePriorita ,descrizioneAttivita.getText().toString(),scadenzaAttivita.getText().toString());
-                HomeActivity.attivitaTutte.add(attivita);
-                FragmentTodo.adapterToDo.notifyDataSetChanged();
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
-                Map<String,Object> attivitaAggiunta = new HashMap<>();
-                attivitaAggiunta.put(attivita.getNome(), attivita);
-                db.collection("ToDo").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(attivitaAggiunta);
+                String nome = nomeAttivita.getText().toString();
+                String descrizione = descrizioneAttivita.getText().toString();
+                String scadenza = scadenzaAttivita.getText().toString();
 
-                //aggiungi sul db
-                dismiss();
+                if (nome.trim().isEmpty() || descrizione.trim().isEmpty()) {
+                    Toast.makeText(getContext(), "Please insert a title and a description", Toast.LENGTH_SHORT).show();
+                } else {
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    CollectionReference todoRef = FirebaseFirestore.getInstance().collection("utenti").document(user.getUid()).collection("ToDo");
+                    todoRef.add(new Attivita(nome, valorePriorita, descrizione, scadenza));
+                    Toast.makeText(getContext(), "Attività aggiunta", Toast.LENGTH_LONG).show();
+                    dismiss();
+                }
                 break;
         }
     }
 }
-*/

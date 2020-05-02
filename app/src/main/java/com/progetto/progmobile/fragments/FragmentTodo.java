@@ -22,6 +22,7 @@ import com.progetto.progmobile.HomeActivity;
 import com.progetto.progmobile.MainActivity;
 import com.progetto.progmobile.R;
 //import com.progetto.progmobile.dialogs.DialogToDoAdd;
+import com.progetto.progmobile.dialogs.DialogToDoAdd;
 import com.progetto.progmobile.entities.Attivita;
 
 import java.util.ArrayList;
@@ -33,10 +34,9 @@ public class FragmentTodo extends Fragment{
 
     private AdapterToDoNuovo adapter;
 
+    private ImageButton btnAdd;
 
-    /*private RecyclerView recyclerView;
-    public static AdapterToDo adapterToDo;
-    private ImageButton btnAdd;*/
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,13 +58,9 @@ public class FragmentTodo extends Fragment{
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
-        /*recyclerView = view.findViewById(R.id.recyclerviewToDo);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapterToDo = new AdapterToDo(HomeActivity.attivitaTutte);
-        recyclerView.setAdapter(adapterToDo);
 
         btnAdd = view.findViewById(R.id.button_add_to_do);
-        adapterToDo.notifyDataSetChanged();
+        //adapterToDo.notifyDataSetChanged();
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,10 +68,12 @@ public class FragmentTodo extends Fragment{
                 assert getFragmentManager() != null;
                 dialog.show(getFragmentManager(), "tag");
             }
-        });*/
+        });
 
         return view;
     }
+
+
 
     @Override
     public void onStart() {
