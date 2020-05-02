@@ -38,6 +38,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="8dp"
                 android:layout_toEndOf="@id/dialogToDoChiudi"
+                android:ellipsize="end"
                 android:text="@string/inserimentoAttivita"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
@@ -118,12 +119,12 @@
             android:layout_marginTop="104dp"
             android:layout_marginEnd="8dp"
             android:hint="@string/descrizione_attivita"
-            android:inputType="textLongMessage"
+            android:importantForAutofill="no"
+            android:inputType="textLongMessage|text|textImeMultiLine"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dialogToDoPrioritaGroup"
-            android:importantForAutofill="no" />
+            app:layout_constraintTop_toBottomOf="@+id/dialogToDoPrioritaGroup" />
 
         <TextView
             android:id="@+id/textView5"
@@ -138,7 +139,7 @@
             app:layout_constraintTop_toBottomOf="@+id/dialogToDoNome" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/dataScelta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -167,7 +168,7 @@
             android:layout_height="49dp"
             android:layout_marginStart="12dp"
             android:layout_marginTop="24dp"
-            app:layout_constraintStart_toEndOf="@+id/textView4"
+            app:layout_constraintStart_toEndOf="@+id/dataScelta"
             app:layout_constraintTop_toBottomOf="@+id/dialogToDoPrioritaGroup"
             app:srcCompat="@drawable/ic_date_range_black_24dp" />
 
