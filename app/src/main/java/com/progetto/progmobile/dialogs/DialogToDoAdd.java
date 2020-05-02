@@ -1,4 +1,4 @@
-package com.progetto.progmobile.dialogs;
+/*package com.progetto.progmobile.dialogs;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -83,3 +83,4 @@ public class DialogToDoAdd extends DialogFragment implements View.OnClickListene
         }
     }
 }
+*/
