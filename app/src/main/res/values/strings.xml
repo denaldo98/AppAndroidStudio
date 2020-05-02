@@ -53,6 +53,15 @@
     <string name="inserimentoAttivita">Inserimento attività</string>
 
 
+    <string-array name="Giorni">
+        <item> Lunedì </item>
+        <item> Martedì </item>
+        <item> Mercoledì </item>
+        <item> Giovedì </item>
+        <item> Venerdì </item>
+        <item> Sabato </item>
+    </string-array>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

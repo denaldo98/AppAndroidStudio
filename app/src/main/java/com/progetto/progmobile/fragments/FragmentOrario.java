@@ -48,8 +48,6 @@ public class FragmentOrario extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_orario, container, false);
 
-
-
         //gestione bottoneAdd
         btnAdd = view.findViewById(R.id.button_add_event);
         btnAdd.setOnClickListener(new View.OnClickListener() {
