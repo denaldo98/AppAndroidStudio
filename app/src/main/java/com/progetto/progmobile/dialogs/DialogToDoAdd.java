@@ -1,10 +1,12 @@
 package com.progetto.progmobile.dialogs;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
@@ -27,7 +29,7 @@ import com.progetto.progmobile.fragments.FragmentTodo;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DialogToDoAdd extends DialogFragment implements View.OnClickListener{
+public class DialogToDoAdd extends DialogFragment implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
     private EditText nomeAttivita, descrizioneAttivita, scadenzaAttivita;
     private RadioGroup prioritaGroup;
     private String nome;
@@ -40,6 +42,11 @@ public class DialogToDoAdd extends DialogFragment implements View.OnClickListene
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStyle(DialogFragment.STYLE_NORMAL, R.style.FullScreenDialogTheme);
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        
     }
 
     @Nullable
