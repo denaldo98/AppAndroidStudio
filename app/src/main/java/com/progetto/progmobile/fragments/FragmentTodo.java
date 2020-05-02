@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -16,6 +17,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.progetto.progmobile.AdapterToDoNuovo;
@@ -27,7 +29,7 @@ import com.progetto.progmobile.entities.Attivita;
 
 import java.util.ArrayList;
 
-public class FragmentTodo extends Fragment{
+public class FragmentTodo extends Fragment  {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private CollectionReference todoRef = db.collection("utenti").document(user.getUid()).collection("ToDo");
@@ -69,8 +71,24 @@ public class FragmentTodo extends Fragment{
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) { //onSwipe is for swipe movements
                 adapter.deleteItem(viewHolder.getAdapterPosition());
+
             }
         }).attachToRecyclerView(recyclerView);
+
+        adapter.setOnItemClickListener(new AdapterToDoNuovo.OnItemClickListener() {
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+                Attivita attivita = documentSnapshot.toObject(Attivita.class);
+                String id = documentSnapshot.getId();
+                String path = documentSnapshot.getReference().getPath(); //ottengo il path del documento che posso passare ad un altra activity ad esempio per modificare 
+                attivita.getDescrizione();
+                //documentSnapshot.getReference();
+
+                Toast.makeText(getContext(), "Position: " + position + " ID: " + id , Toast.LENGTH_SHORT).show();
+
+                //startActivity(); posso lanciare un altra activity e fare modifiche sul db, devo passare l'id del document!!!!!!!!!!
+            }
+        });
 
 
         btnAdd = view.findViewById(R.id.button_add_to_do);

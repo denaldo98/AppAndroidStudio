@@ -11,10 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.progetto.progmobile.entities.Attivita;
 
 public class AdapterToDoNuovo extends FirestoreRecyclerAdapter<Attivita, AdapterToDoNuovo.ToDoHolder> {
-
+    private OnItemClickListener listener;
 
     public AdapterToDoNuovo(@NonNull FirestoreRecyclerOptions<Attivita> options) {
         super(options);
@@ -55,6 +56,26 @@ public class AdapterToDoNuovo extends FirestoreRecyclerAdapter<Attivita, Adapter
             textData = itemView.findViewById(R.id.textToDoData);
             textDescrizione = itemView.findViewById(R.id.textToDoDescrizione);
             immaginePriorita = itemView.findViewById(R.id.immagineToDoPriorita);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION && listener != null) {
+                        listener.onItemClick(getSnapshots().getSnapshot(position), position);
+                    }
+
+                }
+            });
         }
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(DocumentSnapshot documentSnapshot , int position);
+
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
 }
