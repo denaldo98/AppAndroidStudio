@@ -22,7 +22,7 @@
             android:layout_height="match_parent">
 
             <ImageButton
-                android:id="@+id/dialogToDoChiudi"
+                android:id="@+id/dialogAppelloChiudi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -37,14 +37,14 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="8dp"
-                android:layout_toEndOf="@id/dialogToDoChiudi"
+                android:layout_toEndOf="@id/dialogAppelloChiudi"
                 android:ellipsize="end"
-                android:text="@string/inserimentoAttivita"
+                android:text="Aggiungi Appello"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
             <Button
-                android:id="@+id/dialogToDoButtonAdd"
+                android:id="@+id/dialogAppelloButtonAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -67,76 +67,18 @@
         android:layout_height="match_parent"
         android:layout_marginTop="15dp">
 
-        <RadioGroup
-            android:id="@+id/dialogToDoPrioritaGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/dialogToDoNome"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toEndOf="@+id/textView5"
-            app:layout_constraintTop_toBottomOf="@+id/dialogToDoNome">
-
-            <RadioButton
-                android:id="@+id/bassaPriorita"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/bassa" />
-
-            <RadioButton
-                android:id="@+id/mediaPrioria"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/media" />
-
-            <RadioButton
-                android:id="@+id/altaPriorita"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/alta" />
-        </RadioGroup>
 
         <EditText
-            android:id="@+id/dialogToDoNome"
+            android:id="@+id/dialogAppelloMateria"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:hint="@string/nome_attivita"
+            android:hint="Materia"
             android:importantForAutofill="no"
             android:inputType="text"
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-
-        <EditText
-            android:id="@+id/dialogToDoDescrizione"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="104dp"
-            android:layout_marginEnd="8dp"
-            android:hint="@string/descrizione_attivita"
-            android:importantForAutofill="no"
-            android:inputType="textLongMessage|text|textImeMultiLine"
-            android:textSize="25sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dialogToDoPrioritaGroup" />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="48dp"
-            android:text="@string/priorita_attivita"
-            android:textColor="#000000"
-            android:textSize="24sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dialogToDoNome" />
 
         <TextView
             android:id="@+id/dataScelta"
@@ -144,36 +86,25 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="32dp"
-            android:text="@string/scadenza_attivita"
+            android:text="Data appello"
             android:textColor="#4A4A4A"
             android:textSize="24sp"
-            app:layout_constraintStart_toEndOf="@+id/textView6"
-            app:layout_constraintTop_toBottomOf="@+id/dialogToDoPrioritaGroup" />
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="32dp"
-            android:text="@string/scadenza_attivita"
-            android:textColor="#000000"
-            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dialogToDoPrioritaGroup" />
+            app:layout_constraintTop_toBottomOf="@+id/dialogAppelloMateria" />
+
 
         <ImageButton
             android:id="@+id/pickDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="32dp"
-            android:layout_marginEnd="108dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Seleziona data"
             android:padding="8dp"
             android:src="@drawable/ic_date_range_black_24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dialogToDoPrioritaGroup" />
+            app:layout_constraintStart_toEndOf="@+id/dataScelta"
+            app:layout_constraintTop_toBottomOf="@+id/dialogAppelloMateria" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
