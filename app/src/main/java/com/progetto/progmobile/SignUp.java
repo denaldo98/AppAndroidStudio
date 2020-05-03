@@ -80,15 +80,15 @@ public class SignUp extends AppCompatActivity {
         String password = regPassword.getText().toString();
 
         // Validations for input name, surname, email and password
-        if(TextUtils.isEmpty(nome)) {
+        if(nome.trim().isEmpty()) {
             Toast.makeText(getApplicationContext(), "Please enter name!!", Toast.LENGTH_LONG).show();
             return;
         }
-        if(TextUtils.isEmpty(cognome)) {
+        if(cognome.trim().isEmpty()) {
             Toast.makeText(getApplicationContext(), "Please enter surname!!", Toast.LENGTH_LONG).show();
             return;
         }
-        if(TextUtils.isEmpty(email)) {
+        if(email.trim().isEmpty()) {
             Toast.makeText(getApplicationContext(), "Please enter email!!", Toast.LENGTH_LONG).show();
             return;
         }
@@ -137,13 +137,6 @@ public class SignUp extends AppCompatActivity {
         });
     }
 
-
-
-     /*@Override
-    protected void onResume() {
-        super.onResume();
-        progressBar.setVisibility(View.GONE);
-    }*/
 
     private void writeUserToDb(String nome, String cognome, String uid) {
         Map<String, Object> user = new HashMap<>();

@@ -40,7 +40,7 @@ public class ResetPassword extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String email = inputEmail.getText().toString();
-                if (TextUtils.isEmpty(email)) {
+                if (email.trim().isEmpty()) {
                     Toast.makeText(getApplication(), "Enter your mail address", Toast.LENGTH_SHORT).show();
                     return;
                 }

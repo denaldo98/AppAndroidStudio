@@ -89,9 +89,9 @@ public class Login extends AppCompatActivity {
              String userEmail = email.getText().toString();
              String userPassword = password.getText().toString();
 
-             if (TextUtils.isEmpty(userEmail) && (TextUtils.isEmpty(userPassword))) {
+             if (userEmail.trim().isEmpty() && userPassword.trim().isEmpty()) {
                  Toast.makeText(getApplicationContext(), "Empty fields", Toast.LENGTH_LONG).show();
-             } else if (TextUtils.isEmpty(userEmail)) {
+             } else if (userEmail.trim().isEmpty()) {
                  Toast.makeText(getApplicationContext(), "Please enter email!!", Toast.LENGTH_LONG).show();
              } else if (TextUtils.isEmpty(userPassword)) {
                  Toast.makeText(getApplicationContext(), "Please enter password!!", Toast.LENGTH_LONG).show();
@@ -124,13 +124,6 @@ public class Login extends AppCompatActivity {
                  });
              }
          }
-
-   /*@Override
-    protected void onStart() {
-        super.onStart();
-        mAuth.addAuthStateListener(authStateListener);
-    }*/
-
 }
 
 
