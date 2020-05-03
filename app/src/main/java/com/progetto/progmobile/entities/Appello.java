@@ -17,6 +17,8 @@ public class Appello {
         return data;
     }
 
+    
+
     public void setData(String data) {
         this.data = data;
     }
@@ -24,6 +26,9 @@ public class Appello {
     /*public String getId() {
         return id;
     }
+
+
+
 
     public void setId(String id) {
         this.id = id;
