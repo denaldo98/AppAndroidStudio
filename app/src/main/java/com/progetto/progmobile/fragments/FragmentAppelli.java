@@ -33,7 +33,7 @@ public class FragmentAppelli extends Fragment {
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private CollectionReference appelliRef = db.collection("utenti").document(user.getUid()).collection("Appelli");
 
-    private AdapterAppelli adapter;
+    private AdapterAppelli adapter2;
 
     private ImageButton btnAdd;
 
@@ -47,11 +47,11 @@ public class FragmentAppelli extends Fragment {
         View view = inflater.inflate(R.layout.fragment_appelli, container, false);
         Query query = appelliRef.orderBy("materia", Query.Direction.ASCENDING);
         FirestoreRecyclerOptions<Appello> options = new FirestoreRecyclerOptions.Builder<Appello>().setQuery(query, Appello.class).build();
-        adapter = new AdapterAppelli(options);
+        adapter2 = new AdapterAppelli(options);
         RecyclerView recyclerView = view.findViewById(R.id.recyclerviewAppelli);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter2);
 
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {  //il primo parametro è per il DRAG che non consideriamo, il secondo paramtro è per le direzione di swipe
             @Override
@@ -70,14 +70,14 @@ public class FragmentAppelli extends Fragment {
                 removeAlert.setCancelable(false);
                 removeAlert.setPositiveButton("Conferma", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        adapter.deleteItem(viewHolder.getAdapterPosition());
+                        adapter2.deleteItem(viewHolder.getAdapterPosition());
                         Toast.makeText(getContext(), "Appello eliminato!", Toast.LENGTH_LONG).show();
                     }
                 });
 
                 removeAlert.setNegativeButton("Annulla", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        adapter.notifyDataSetChanged();
+                        adapter2.notifyDataSetChanged();
                         dialog.dismiss();
                     }
                 });
@@ -87,7 +87,7 @@ public class FragmentAppelli extends Fragment {
             }
         }).attachToRecyclerView(recyclerView);
 
-        adapter.setOnItemClickListener(new AdapterAppelli.OnItemClickListener() {
+        adapter2.setOnItemClickListener(new AdapterAppelli.OnItemClickListener() {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
                 Appello appello = documentSnapshot.toObject(Appello.class);
@@ -121,12 +121,12 @@ public class FragmentAppelli extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        adapter.startListening();
+        adapter2.startListening();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        adapter.stopListening();
+        adapter2.stopListening();
     }
 }

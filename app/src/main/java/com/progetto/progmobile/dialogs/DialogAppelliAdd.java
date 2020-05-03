@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.progetto.progmobile.R;
+import com.progetto.progmobile.entities.Appello;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -89,22 +90,23 @@ public class DialogAppelliAdd extends DialogFragment implements View.OnClickList
     public void onClick(View v) {
         int id = v.getId();
         switch (id){
-            case R.id.dialogToDoChiudi: dismiss(); break;
-            case R.id.dialogToDoButtonAdd:
+            case R.id.dialogAppelloChiudi: dismiss(); break;
+            case R.id.dialogAppelloButtonAdd:
                 String materia = nomeMateria.getText().toString();
                 String data = dataScelta.getText().toString();
-                int tab1 = data.indexOf("/");
-                int tab2 = data.indexOf("/",tab1+1);
-                String toast = data.substring(0,tab1-1)+" : "+ data.substring(tab1,tab2)+" : "+ data.substring(tab2,data.length()-1);
-                Toast.makeText(getContext(), toast, Toast.LENGTH_LONG).show();
-//DA MODIFICARE!
 
                 if (materia.trim().isEmpty()||data.equals("Scadenza")) {
                     Toast.makeText(getContext(), "Please insert a titleand a date", Toast.LENGTH_SHORT).show();
                 } else {
+                    String delimiter = "/";
+                    String[] dataseparata = data.split(delimiter);
+                    String toast = dataseparata[0]+" : "+ dataseparata[1]+" : "+ dataseparata[2];
+                    int giorno = Integer.parseInt(dataseparata[0]);
+                    int mese = Integer.parseInt(dataseparata[1]);
+                    int anno = Integer.parseInt(dataseparata[2]);
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     CollectionReference AppelliRef = FirebaseFirestore.getInstance().collection("utenti").document(user.getUid()).collection("Appelli");
-                    //AppelliRef.add(new Appello(materia, valorePriorita, descrizione, data));//DA MODIFICARE!
+                    AppelliRef.add(new Appello(materia, anno, mese, giorno));
                     Toast.makeText(getContext(), "Appello aggiunta", Toast.LENGTH_LONG).show();
                     dismiss();
                 }

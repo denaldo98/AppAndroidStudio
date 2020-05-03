@@ -11,12 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.progetto.progmobile.R;
 import com.progetto.progmobile.entities.Appello;
 
 public class AdapterAppelli extends FirestoreRecyclerAdapter<Appello, AdapterAppelli.AppelloHolder> {
 
-    private AdapterAppelli.OnItemClickListener listener;
+    private OnItemClickListener listener;
 
     public AdapterAppelli(@NonNull FirestoreRecyclerOptions<Appello> options) {
         super(options);

@@ -53,7 +53,7 @@
                 android:background="?attr/selectableItemBackground"
                 android:padding="8dp"
                 android:text="@string/conferma"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/black" />
 
         </RelativeLayout>
 
