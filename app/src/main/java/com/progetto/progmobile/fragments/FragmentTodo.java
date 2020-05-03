@@ -26,6 +26,8 @@ import com.progetto.progmobile.R;
 //import com.progetto.progmobile.dialogs.DialogToDoAdd;
 import com.progetto.progmobile.dialogs.DialogToDoAdd;
 import com.progetto.progmobile.entities.Attivita;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 
 import java.util.ArrayList;
 
@@ -47,7 +49,7 @@ public class FragmentTodo extends Fragment  {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_todo, container, false);
+        final View view = inflater.inflate(R.layout.fragment_todo, container, false);
 
         Query query = todoRef.orderBy("priorita", Query.Direction.DESCENDING);
 
@@ -61,6 +63,11 @@ public class FragmentTodo extends Fragment  {
         recyclerView.setAdapter(adapter);
 
 
+
+
+
+
+
         //classe per operazioni di swipe sulla recycler view: facendo swipe sia verso destra che verso sinistra si cancella un item
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {  //il primo parametro è per il DRAG che non consideriamo, il secondo paramtro è per le direzione di swipe
             @Override
@@ -69,9 +76,30 @@ public class FragmentTodo extends Fragment  {
             }
 
             @Override
-            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) { //onSwipe is for swipe movements
-                adapter.deleteItem(viewHolder.getAdapterPosition());
+            public void onSwiped(@NonNull final RecyclerView.ViewHolder viewHolder, int direction) { //onSwipe is for swipe movements
 
+                AlertDialog.Builder removeAlert = new AlertDialog.Builder(getContext());
+                removeAlert.setTitle("Conferma eliminazione");
+                removeAlert.setMessage("Per favore, conferma di voler eliminare l'attività!");
+                removeAlert.setIcon(R.drawable.ic_error_black_24dp);
+
+                removeAlert.setCancelable(false);
+                removeAlert.setPositiveButton("Conferma", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        adapter.deleteItem(viewHolder.getAdapterPosition());
+                        Toast.makeText(getContext(), "Attività eliminata!", Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                removeAlert.setNegativeButton("Annulla", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                         adapter.notifyDataSetChanged();
+                        dialog.dismiss();
+                    }
+                });
+
+                AlertDialog alert = removeAlert.create();
+                alert.show();
             }
         }).attachToRecyclerView(recyclerView);
 
@@ -80,7 +108,7 @@ public class FragmentTodo extends Fragment  {
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
                 Attivita attivita = documentSnapshot.toObject(Attivita.class);
                 String id = documentSnapshot.getId();
-                String path = documentSnapshot.getReference().getPath(); //ottengo il path del documento che posso passare ad un altra activity ad esempio per modificare 
+                String path = documentSnapshot.getReference().getPath(); //ottengo il path del documento che posso passare ad un altra activity ad esempio per modificare
                 attivita.getDescrizione();
                 //documentSnapshot.getReference();
 
