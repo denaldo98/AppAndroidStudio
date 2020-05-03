@@ -21,5 +21,6 @@ public class Evento {
     public String getAula() { return aula; }
     public String getGiorno() { return giorno; }
     public String getOraInizio() { return oraInizio; }
+
     public String getOraFine() { return oraFine; }
 }
