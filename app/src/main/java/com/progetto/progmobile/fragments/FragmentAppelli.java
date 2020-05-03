@@ -24,6 +24,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.progetto.progmobile.AdapterAppelli;
 import com.progetto.progmobile.R;
+import com.progetto.progmobile.dialogs.DialogAppelliAdd;
 import com.progetto.progmobile.dialogs.DialogToDoAdd2;
 import com.progetto.progmobile.entities.Appello;
 
@@ -108,7 +109,7 @@ public class FragmentAppelli extends Fragment {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogToDoAdd2 dialog = DialogToDoAdd2.newInstance();
+                DialogAppelliAdd dialog = DialogAppelliAdd.newInstance();
                 assert getFragmentManager() != null;
                 dialog.show(getFragmentManager(), "tag");
             }
