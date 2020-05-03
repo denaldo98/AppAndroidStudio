@@ -24,12 +24,10 @@ import com.progetto.progmobile.AdapterToDoNuovo;
 
 import com.progetto.progmobile.R;
 //import com.progetto.progmobile.dialogs.DialogToDoAdd;
-import com.progetto.progmobile.dialogs.DialogToDoAdd;
+import com.progetto.progmobile.dialogs.DialogToDoAdd2;
 import com.progetto.progmobile.entities.Attivita;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-
-import java.util.ArrayList;
 
 public class FragmentTodo extends Fragment  {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -125,7 +123,7 @@ public class FragmentTodo extends Fragment  {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogToDoAdd dialog = DialogToDoAdd.newInstance();
+                DialogToDoAdd2 dialog = DialogToDoAdd2.newInstance();
                 assert getFragmentManager() != null;
                 dialog.show(getFragmentManager(), "tag");
             }

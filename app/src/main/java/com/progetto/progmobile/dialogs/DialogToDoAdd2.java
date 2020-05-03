@@ -67,7 +67,23 @@ public class DialogToDoAdd2 extends DialogFragment implements View.OnClickListen
 
         chiudi.setOnClickListener(this);
         aggiungi.setOnClickListener(this);
-        pickDate.setOnClickListener(this);
+        pickDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar calendar = Calendar.getInstance();
+                int year = calendar.get(Calendar.YEAR);
+                int month = calendar.get(Calendar.MONTH);
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        String scadenza = dayOfMonth+"/"+(month+1)+"/"+year;
+                        dataScelta.setText(scadenza);
+                    }
+                },year,month,day);
+                datePickerDialog.show();
+            }
+        });
 
 
         return view;
@@ -79,10 +95,6 @@ public class DialogToDoAdd2 extends DialogFragment implements View.OnClickListen
         int id = v.getId();
         switch (id){
             case R.id.dialogToDoChiudi: dismiss(); break;
-            case R.id.pickDate:
-                DialogFragment DatePicker = new DatePickerFragment();
-                assert getFragmentManager() != null;
-                DatePicker.show(getFragmentManager(), "date picker"); break;
             case R.id.dialogToDoButtonAdd:
                 int numPriorita = prioritaGroup.getCheckedRadioButtonId();
                 RadioButton radioButton = prioritaGroup.findViewById(numPriorita);
