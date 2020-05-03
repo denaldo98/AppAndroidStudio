@@ -77,7 +77,7 @@ public class FragmentTodo extends Fragment  {
 
             @Override
             public void onSwiped(@NonNull final RecyclerView.ViewHolder viewHolder, int direction) { //onSwipe is for swipe movements
-
+                //AlertDialog per confermare l'eliminazione con lo swipe
                 AlertDialog.Builder removeAlert = new AlertDialog.Builder(getContext());
                 removeAlert.setTitle("Conferma eliminazione");
                 removeAlert.setMessage("Per favore, conferma di voler eliminare l'attività!");
