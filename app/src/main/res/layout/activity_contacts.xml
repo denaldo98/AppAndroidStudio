@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@android:color/white">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -28,6 +29,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="8dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
+               android:tint="@android:color/white"
                 android:padding="8dp"
                 android:src="@drawable/ic_arrow_back_black_24dp" />
 

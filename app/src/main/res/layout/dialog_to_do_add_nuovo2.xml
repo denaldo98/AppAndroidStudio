@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@android:color/white">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -30,7 +31,8 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="@string/indietro"
                 android:padding="8dp"
-                android:src="@drawable/ic_arrow_back_black_24dp" />
+                android:src="@drawable/ic_arrow_back_black_24dp"
+                android:tint="@android:color/white"/>
 
             <TextView
                 android:id="@+id/textAttivita"
@@ -54,7 +56,7 @@
                 android:background="?attr/selectableItemBackground"
                 android:padding="8dp"
                 android:text="@string/conferma"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/white" />
 
         </RelativeLayout>
 
