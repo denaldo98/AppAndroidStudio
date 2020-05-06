@@ -46,13 +46,10 @@ public class HomeActivity extends AppCompatActivity {
     private FragmentCorsi fragmentCorsi;
     private FragmentOrario fragmentOrario;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_home);
-
 
         // Find the toolbar view inside the activity layout
         Toolbar toolbar = findViewById(R.id.toolbar);

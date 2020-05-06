@@ -23,7 +23,7 @@ import com.google.firebase.firestore.Query;
 import com.progetto.progmobile.AdapterToDoNuovo;
 
 import com.progetto.progmobile.R;
-//import com.progetto.progmobile.dialogs.DialogToDoAdd;
+import com.progetto.progmobile.dialogs.DialogModifyToDo;
 import com.progetto.progmobile.dialogs.DialogToDoAdd2;
 import com.progetto.progmobile.entities.Attivita;
 import android.app.AlertDialog;
@@ -59,10 +59,6 @@ public class FragmentTodo extends Fragment  {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
-
-
-
-
 
 
 
@@ -104,15 +100,25 @@ public class FragmentTodo extends Fragment  {
         adapter.setOnItemClickListener(new AdapterToDoNuovo.OnItemClickListener() {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+
+
                 Attivita attivita = documentSnapshot.toObject(Attivita.class);
                 String id = documentSnapshot.getId();
                 String path = documentSnapshot.getReference().getPath(); //ottengo il path del documento che posso passare ad un altra activity ad esempio per modificare
-                attivita.getDescrizione();
+                //attivita.getDescrizione();
                 //documentSnapshot.getReference();
 
-                Toast.makeText(getContext(), "Position: " + position + " ID: " + id , Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "Position: " + position + " ID: " + id , Toast.LENGTH_SHORT).show();
 
                 //startActivity(); posso lanciare un altra activity e fare modifiche sul db, devo passare l'id del document!!!!!!!!!!
+
+
+                DialogModifyToDo dialogModifyToDo = new DialogModifyToDo(attivita, path);
+                assert getFragmentManager() != null;
+               dialogModifyToDo.show(getFragmentManager(), "tag");
+
+
+
             }
         });
 
