@@ -24,8 +24,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.progetto.progmobile.AdapterAppelli;
 import com.progetto.progmobile.R;
-import com.progetto.progmobile.dialogs.DialogAppelliAdd;
-import com.progetto.progmobile.dialogs.DialogToDoAdd2;
+import com.progetto.progmobile.dialogs.DialogAppello;
 import com.progetto.progmobile.entities.Appello;
 
 public class FragmentAppelli extends Fragment {
@@ -90,15 +89,15 @@ public class FragmentAppelli extends Fragment {
         adapter2.setOnItemClickListener(new AdapterAppelli.OnItemClickListener() {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+
                 Appello appello = documentSnapshot.toObject(Appello.class);
                 String id = documentSnapshot.getId();
                 String path = documentSnapshot.getReference().getPath(); //ottengo il path del documento che posso passare ad un altra activity ad esempio per modificare
                 appello.getMateria();
-                //documentSnapshot.getReference();
 
-                Toast.makeText(getContext(), "Position: " + position + " ID: " + id , Toast.LENGTH_SHORT).show();
-
-                //startActivity(); posso lanciare un altra activity e fare modifiche sul db, devo passare l'id del document!!!!!!!!!!
+                DialogAppello dialogModifyAppello = new DialogAppello(appello, path);
+                assert getFragmentManager() != null;
+                dialogModifyAppello.show(getFragmentManager(), "tag");
             }
         });
 
@@ -109,9 +108,9 @@ public class FragmentAppelli extends Fragment {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogAppelliAdd dialog = DialogAppelliAdd.newInstance();
+                DialogAppello dialogInsert =  new DialogAppello();
                 assert getFragmentManager() != null;
-                dialog.show(getFragmentManager(), "tag");
+                dialogInsert.show(getFragmentManager(), "tag");
             }
         });
 

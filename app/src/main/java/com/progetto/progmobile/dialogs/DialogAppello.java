@@ -26,13 +26,21 @@ import com.progetto.progmobile.entities.Appello;
 import java.text.DateFormat;
 import java.util.Calendar;
 
-public class DialogAppelliAdd extends DialogFragment implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
+public class DialogAppello extends DialogFragment implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
 
     private EditText nomeMateria;
-    private TextView dataScelta;
+    private TextView dataScelta, txtAppello;
+    private String path;
+    private Appello appello;
 
-    public static DialogAppelliAdd newInstance(){
-        return new DialogAppelliAdd();
+    public DialogAppello(Appello appello, String path) {
+        this.appello = appello;
+        this.path  = path;
+    }
+
+    public DialogAppello() {
+        this.appello = null;
+        this.path = null;
     }
 
     @Override
@@ -57,9 +65,20 @@ public class DialogAppelliAdd extends DialogFragment implements View.OnClickList
         View view = inflater.inflate(R.layout.dialog_appello_add, container, false);
         ImageButton chiudi = view.findViewById(R.id.dialogAppelloChiudi);
         nomeMateria = view.findViewById(R.id.dialogAppelloMateria);
+        txtAppello = view.findViewById(R.id.txtAppello);
+
         ImageButton pickDate = view.findViewById(R.id.pickDate);
         Button aggiungi = view.findViewById(R.id.dialogAppelloButtonAdd);
         dataScelta = view.findViewById(R.id.dataScelta);
+
+        if( this.path != null ) {
+        txtAppello.setText("Modifica Appello");
+        nomeMateria.setText(appello.getMateria());
+        dataScelta.setText(appello.getGiorno() + "/" + appello.getMese() + "/" + appello.getAnno());
+        } else txtAppello.setText("Inserimento Appello");
+
+
+
 
         chiudi.setOnClickListener(this);
         aggiungi.setOnClickListener(this);
@@ -104,10 +123,16 @@ public class DialogAppelliAdd extends DialogFragment implements View.OnClickList
                     int giorno = Integer.parseInt(dataseparata[0]);
                     int mese = Integer.parseInt(dataseparata[1]);
                     int anno = Integer.parseInt(dataseparata[2]);
-                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    CollectionReference AppelliRef = FirebaseFirestore.getInstance().collection("utenti").document(user.getUid()).collection("Appelli");
-                    AppelliRef.add(new Appello(materia, anno, mese, giorno));
-                    Toast.makeText(getContext(), "Appello aggiunta", Toast.LENGTH_LONG).show();
+                    if(path != null) {
+                        FirebaseFirestore.getInstance().document(path).set(new Appello(materia, anno, mese, giorno));
+                        Toast.makeText(getContext(), "Appello modificato", Toast.LENGTH_LONG).show();
+                    }
+                    else{
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        CollectionReference AppelliRef = FirebaseFirestore.getInstance().collection("utenti").document(user.getUid()).collection("Appelli");
+                        AppelliRef.add(new Appello(materia, anno, mese, giorno));
+                        Toast.makeText(getContext(), "Appello aggiunta", Toast.LENGTH_LONG).show();
+                    }
                     dismiss();
                 }
                 break;

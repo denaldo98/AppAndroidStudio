@@ -101,7 +101,6 @@ public class FragmentTodo extends Fragment  {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
 
-
                 Attivita attivita = documentSnapshot.toObject(Attivita.class);
                 String id = documentSnapshot.getId();
                 String path = documentSnapshot.getReference().getPath(); //ottengo il path del documento che posso passare ad un altra activity ad esempio per modificare
