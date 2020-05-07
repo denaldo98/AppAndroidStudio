@@ -117,17 +117,27 @@
         <EditText
             android:id="@+id/dialogToDoDescrizione"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="120dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="104dp"
+            android:layout_marginTop="44dp"
             android:layout_marginEnd="8dp"
+            android:allowUndo="true"
             android:hint="@string/descrizione_attivita"
             android:importantForAutofill="no"
-            android:inputType="textLongMessage|text|textImeMultiLine"
+            android:inputType="textImeMultiLine"
+            android:lines="5"
+            android:maxLines="10"
+            android:minLines="1"
+            android:scrollIndicators="top|bottom"
+            android:scrollbarStyle="insideOverlay"
+            android:scrollbars="vertical"
+            android:scrollHorizontally="false"
+            android:singleLine="false"
+            android:textAlignment="textStart"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dialogToDoPrioritaGroup" />
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
         <TextView
             android:id="@+id/textView5"

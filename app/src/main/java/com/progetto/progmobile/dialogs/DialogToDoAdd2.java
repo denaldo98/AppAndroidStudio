@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Scroller;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -64,6 +65,11 @@ public class DialogToDoAdd2 extends DialogFragment implements View.OnClickListen
         Button aggiungi = view.findViewById(R.id.dialogToDoButtonAdd);
         prioritaGroup = view.findViewById(R.id.dialogToDoPrioritaGroup);
         dataScelta = view.findViewById(R.id.dataScelta);
+        descrizioneAttivita.setScroller(new Scroller(getContext()));
+        descrizioneAttivita.setVerticalScrollBarEnabled(true);
+        descrizioneAttivita.setHorizontallyScrolling(false);
+        descrizioneAttivita.setLines(5);
+        descrizioneAttivita.setHorizontalScrollBarEnabled(false);
 
         chiudi.setOnClickListener(this);
         aggiungi.setOnClickListener(this);
