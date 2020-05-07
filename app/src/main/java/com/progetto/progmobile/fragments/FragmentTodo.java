@@ -23,8 +23,8 @@ import com.google.firebase.firestore.Query;
 import com.progetto.progmobile.AdapterToDoNuovo;
 
 import com.progetto.progmobile.R;
-import com.progetto.progmobile.dialogs.DialogModifyToDo;
-import com.progetto.progmobile.dialogs.DialogToDoAdd2;
+
+import com.progetto.progmobile.dialogs.DialogToDo;
 import com.progetto.progmobile.entities.Attivita;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -102,22 +102,19 @@ public class FragmentTodo extends Fragment  {
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
 
                 Attivita attivita = documentSnapshot.toObject(Attivita.class);
-                String id = documentSnapshot.getId();
+
                 String path = documentSnapshot.getReference().getPath(); //ottengo il path del documento che posso passare ad un altra activity ad esempio per modificare
+
+                //String id = documentSnapshot.getId();
                 //attivita.getDescrizione();
                 //documentSnapshot.getReference();
-
                 //Toast.makeText(getContext(), "Position: " + position + " ID: " + id , Toast.LENGTH_SHORT).show();
 
                 //startActivity(); posso lanciare un altra activity e fare modifiche sul db, devo passare l'id del document!!!!!!!!!!
 
-
-                DialogModifyToDo dialogModifyToDo = new DialogModifyToDo(attivita, path);
+                DialogToDo dialogModifyToDo = new DialogToDo(attivita, path);
                 assert getFragmentManager() != null;
-               dialogModifyToDo.show(getFragmentManager(), "tag");
-
-
-
+                dialogModifyToDo.show(getFragmentManager(), "tag");
             }
         });
 
@@ -128,15 +125,14 @@ public class FragmentTodo extends Fragment  {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogToDoAdd2 dialog = DialogToDoAdd2.newInstance();
+                DialogToDo dialogAddToDo = new DialogToDo();
                 assert getFragmentManager() != null;
-                dialog.show(getFragmentManager(), "tag");
+                dialogAddToDo.show(getFragmentManager(), "tag");
             }
         });
 
         return view;
     }
-
 
 
     @Override

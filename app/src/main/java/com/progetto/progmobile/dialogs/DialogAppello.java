@@ -62,7 +62,7 @@ public class DialogAppello extends DialogFragment implements View.OnClickListene
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.dialog_appello_add, container, false);
+        View view = inflater.inflate(R.layout.dialog_appello, container, false);
         ImageButton chiudi = view.findViewById(R.id.dialogAppelloChiudi);
         nomeMateria = view.findViewById(R.id.dialogAppelloMateria);
         txtAppello = view.findViewById(R.id.txtAppello);
@@ -131,7 +131,7 @@ public class DialogAppello extends DialogFragment implements View.OnClickListene
                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                         CollectionReference AppelliRef = FirebaseFirestore.getInstance().collection("utenti").document(user.getUid()).collection("Appelli");
                         AppelliRef.add(new Appello(materia, anno, mese, giorno));
-                        Toast.makeText(getContext(), "Appello aggiunta", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), "Appello aggiunto", Toast.LENGTH_LONG).show();
                     }
                     dismiss();
                 }

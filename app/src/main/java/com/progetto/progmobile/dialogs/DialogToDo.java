@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Scroller;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,15 +29,19 @@ import com.progetto.progmobile.entities.Attivita;
 import java.text.DateFormat;
 import java.util.Calendar;
 
-public class DialogModifyToDo extends DialogFragment implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
+public class DialogToDo extends DialogFragment implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
     private EditText nomeAttivita, descrizioneAttivita;
     private RadioGroup prioritaGroup;
     private TextView dataScelta, txtAttivita;
     private String path;
     private Attivita attivita;
 
+    public DialogToDo() {
+        this.attivita = null;
+        this.path = null;
+    }
 
-    public DialogModifyToDo(Attivita attivita, String path) {
+    public DialogToDo(Attivita attivita, String path) {
         this.attivita = attivita;
         this.path = path;
     }
@@ -60,26 +65,35 @@ public class DialogModifyToDo extends DialogFragment implements View.OnClickList
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.dialog_to_do_add_nuovo2, container, false);
+        View view = inflater.inflate(R.layout.dialog_to_do, container, false);
         ImageButton chiudi = view.findViewById(R.id.dialogToDoChiudi);
-
         nomeAttivita = view.findViewById(R.id.dialogToDoNome);
-        nomeAttivita.setText(attivita.getNome());
         txtAttivita = view.findViewById(R.id.textAttivita);
-        txtAttivita.setText("Modifica Attività");
         descrizioneAttivita = view.findViewById(R.id.dialogToDoDescrizione);
-        descrizioneAttivita.setText(attivita.getDescrizione());
         ImageButton pickDate = view.findViewById(R.id.pickDate);
         Button aggiungi = view.findViewById(R.id.dialogToDoButtonAdd);
         prioritaGroup = view.findViewById(R.id.dialogToDoPrioritaGroup);
-        if(attivita.getPriorita() == 1)
-            prioritaGroup.check(R.id.bassaPriorita);
-        else if(attivita.getPriorita() == 2)
-            prioritaGroup.check(R.id.mediaPrioria);
-        else prioritaGroup.check(R.id.altaPriorita);
-
         dataScelta = view.findViewById(R.id.dataScelta);
-        dataScelta.setText(attivita.getData());
+
+        if(this.path != null) {
+            txtAttivita.setText("Modifica Attività");
+            nomeAttivita.setText(attivita.getNome());
+            descrizioneAttivita.setText(attivita.getDescrizione());
+            dataScelta.setText(attivita.getData());
+
+            if (attivita.getPriorita() == 1)
+                prioritaGroup.check(R.id.bassaPriorita);
+            else if (attivita.getPriorita() == 2)
+                prioritaGroup.check(R.id.mediaPrioria);
+            else prioritaGroup.check(R.id.altaPriorita);
+        } else txtAttivita.setText("Inserimento Attività");
+
+
+        descrizioneAttivita.setScroller(new Scroller(getContext()));
+        descrizioneAttivita.setVerticalScrollBarEnabled(true);
+        descrizioneAttivita.setHorizontallyScrolling(false);
+        descrizioneAttivita.setLines(5);
+        descrizioneAttivita.setHorizontalScrollBarEnabled(false);
 
         chiudi.setOnClickListener(this);
         aggiungi.setOnClickListener(this);
@@ -128,8 +142,16 @@ public class DialogModifyToDo extends DialogFragment implements View.OnClickList
                 if (nome.trim().isEmpty() || descrizione.trim().isEmpty()||data.equals("Scadenza")) {
                     Toast.makeText(getContext(), "Please insert a title, a date and a description", Toast.LENGTH_SHORT).show();
                 } else {
-                    FirebaseFirestore.getInstance().document(path).set(new Attivita(nome, valorePriorita, descrizione, data));
-                    Toast.makeText(getContext(), "Attività modificata", Toast.LENGTH_LONG).show();
+
+                    if(path != null) {
+                        FirebaseFirestore.getInstance().document(path).set(new Attivita(nome, valorePriorita, descrizione, data));
+                        Toast.makeText(getContext(), "Attività modificata", Toast.LENGTH_LONG).show();
+                    } else {
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        CollectionReference todoRef = FirebaseFirestore.getInstance().collection("utenti").document(user.getUid()).collection("ToDo");
+                        todoRef.add(new Attivita(nome, valorePriorita, descrizione, data));
+                        Toast.makeText(getContext(), "Attività aggiunta", Toast.LENGTH_LONG).show();
+                    }
                     dismiss();
                 }
                 break;
