@@ -11,6 +11,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 //import com.progetto.progmobile.AdapterToDo;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.progetto.progmobile.AdapterCorsi;
 import com.progetto.progmobile.R;
 import com.progetto.progmobile.entities.Attivita;
 
@@ -18,7 +23,14 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class FragmentCorsi extends Fragment {
-    private RecyclerView recyclerView;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private CollectionReference todoRef = db.collection("utenti").document(user.getUid()).collection("Corsi");
+
+    private AdapterCorsi adapter;
+
+    private ImageButton btnAdd;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
