@@ -92,7 +92,7 @@ public class DialogToDo extends DialogFragment implements View.OnClickListener, 
         descrizioneAttivita.setScroller(new Scroller(getContext()));
         descrizioneAttivita.setVerticalScrollBarEnabled(true);
         descrizioneAttivita.setHorizontallyScrolling(false);
-        descrizioneAttivita.setLines(5);
+        //descrizioneAttivita.setLines();
         descrizioneAttivita.setHorizontalScrollBarEnabled(false);
 
         chiudi.setOnClickListener(this);
