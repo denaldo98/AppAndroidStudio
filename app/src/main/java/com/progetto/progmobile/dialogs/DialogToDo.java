@@ -89,11 +89,11 @@ public class DialogToDo extends DialogFragment implements View.OnClickListener, 
         } else txtAttivita.setText("Inserimento Attività");
 
 
-        descrizioneAttivita.setScroller(new Scroller(getContext()));
-        descrizioneAttivita.setVerticalScrollBarEnabled(true);
-        descrizioneAttivita.setHorizontallyScrolling(false);
+        //descrizioneAttivita.setScroller(new Scroller(getContext()));
+       // descrizioneAttivita.setVerticalScrollBarEnabled(true);
+        //descrizioneAttivita.setHorizontallyScrolling(false);
         //descrizioneAttivita.setLines();
-        descrizioneAttivita.setHorizontalScrollBarEnabled(false);
+        //descrizioneAttivita.setHorizontalScrollBarEnabled(false);
 
         chiudi.setOnClickListener(this);
         aggiungi.setOnClickListener(this);
