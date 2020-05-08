@@ -61,7 +61,7 @@ public class FragmentAppelli extends Fragment {
             @Override
             public void onSwiped(@NonNull final RecyclerView.ViewHolder viewHolder, int direction) { //onSwipe is for swipe movements
                 //AlertDialog per confermare l'eliminazione con lo swipe
-                AlertDialog.Builder removeAlert = new AlertDialog.Builder(getContext());
+                AlertDialog.Builder removeAlert = new AlertDialog.Builder(getContext(), R.style.AlertDialogStyle);
                 removeAlert.setTitle("Conferma eliminazione");
                 removeAlert.setMessage("Per favore, conferma di voler eliminare l'appello!");
                 removeAlert.setIcon(R.drawable.ic_error_black_24dp);

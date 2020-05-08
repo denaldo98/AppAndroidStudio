@@ -55,8 +55,7 @@ public class FullScreenDialog extends DialogFragment {
                 minutoI = c.get(Calendar.MINUTE);
 
                 //launch Time-picker dialog
-                TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(),
-                        new TimePickerDialog.OnTimeSetListener() {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), R.style.TimePickerTheme, new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                                 stringOraI = hourOfDay + ":" + minute;
@@ -78,8 +77,7 @@ public class FullScreenDialog extends DialogFragment {
                 minutoF = c.get(Calendar.MINUTE);
 
                 //launch Time-picker dialog
-                TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(),
-                        new TimePickerDialog.OnTimeSetListener() {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), R.style.TimePickerTheme, new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                                 stringOraF = hourOfDay + ":" + minute;
