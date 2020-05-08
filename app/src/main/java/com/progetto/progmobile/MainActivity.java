@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final int SPLASH_SCREEN = 4000;
+    private static final int SPLASH_SCREEN = 3000;
 
     //Variabili
     Animation topAnim, bottomAnim;

@@ -74,7 +74,7 @@ public class DialogAppello extends DialogFragment implements View.OnClickListene
         if( this.path != null ) {
         txtAppello.setText("Modifica Appello");
         nomeMateria.setText(appello.getMateria());
-        dataScelta.setText(appello.getGiorno() + "/" + appello.getMese() + "/" + appello.getAnno());
+        dataScelta.setText(new StringBuilder().append(appello.getGiorno()).append("/").append(appello.getMese()).append("/").append(appello.getAnno()).toString());
         } else txtAppello.setText("Inserimento Appello");
 
 

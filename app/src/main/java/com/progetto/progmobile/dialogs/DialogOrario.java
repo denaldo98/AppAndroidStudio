@@ -1,13 +1,11 @@
 package com.progetto.progmobile.dialogs;
 
 import android.app.TimePickerDialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
@@ -20,9 +18,9 @@ import java.util.Calendar;
 
 import static com.progetto.progmobile.R.id.OraIButton;
 
-public class FullScreenDialog extends DialogFragment {
-    public static FullScreenDialog newInstance() {
-        return new FullScreenDialog();
+public class DialogOrario extends DialogFragment {
+    public static DialogOrario newInstance() {
+        return new DialogOrario();
     }
 
     //bottoni che aprono i time-picker

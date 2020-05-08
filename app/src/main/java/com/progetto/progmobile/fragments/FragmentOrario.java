@@ -15,7 +15,7 @@ import android.widget.ImageButton;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.progetto.progmobile.R;
-import com.progetto.progmobile.dialogs.FullScreenDialog;
+import com.progetto.progmobile.dialogs.DialogOrario;
 import com.progetto.progmobile.fragments.tabsFragments.PageAdapter;
 
 /**
@@ -53,7 +53,7 @@ public class FragmentOrario extends Fragment {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogFragment dialog = FullScreenDialog.newInstance();
+                DialogFragment dialog = DialogOrario.newInstance();
                 assert getFragmentManager() != null;
                 dialog.show(getFragmentManager(), "tag");
             }
