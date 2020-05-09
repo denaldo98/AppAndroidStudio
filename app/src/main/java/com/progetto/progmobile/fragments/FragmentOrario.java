@@ -18,6 +18,7 @@ import com.progetto.progmobile.R;
 import com.progetto.progmobile.dialogs.DialogOrario;
 import com.progetto.progmobile.fragments.tabsFragments.PageAdapter;
 
+
 public class FragmentOrario extends Fragment {
 
 
@@ -67,7 +68,7 @@ public class FragmentOrario extends Fragment {
         tab6 = (TabItem ) view.findViewById(R.id.Tab6);
         viewPager = (ViewPager) view.findViewById(R.id.viewpager);
 
-        pagerAdapter = new PageAdapter(getFragmentManager(), tablayout.getTabCount());
+        pagerAdapter = new PageAdapter(getChildFragmentManager(), tablayout.getTabCount());
         viewPager.setAdapter(pagerAdapter);
 
         //noinspection deprecation
@@ -84,7 +85,6 @@ public class FragmentOrario extends Fragment {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
             }
         });
 
@@ -92,6 +92,7 @@ public class FragmentOrario extends Fragment {
 
         return view;
     }
+
 
 
 }
