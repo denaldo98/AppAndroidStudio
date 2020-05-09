@@ -18,9 +18,6 @@ import com.progetto.progmobile.R;
 import com.progetto.progmobile.dialogs.DialogOrario;
 import com.progetto.progmobile.fragments.tabsFragments.PageAdapter;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class FragmentOrario extends Fragment {
 
 
@@ -53,7 +50,7 @@ public class FragmentOrario extends Fragment {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogFragment dialog = DialogOrario.newInstance();
+                DialogFragment dialog = new DialogOrario();
                 assert getFragmentManager() != null;
                 dialog.show(getFragmentManager(), "tag");
             }
@@ -73,6 +70,7 @@ public class FragmentOrario extends Fragment {
         pagerAdapter = new PageAdapter(getFragmentManager(), tablayout.getTabCount());
         viewPager.setAdapter(pagerAdapter);
 
+        //noinspection deprecation
         tablayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {

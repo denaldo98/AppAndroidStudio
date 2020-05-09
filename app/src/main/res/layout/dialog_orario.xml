@@ -23,7 +23,7 @@
             android:layout_height="match_parent">
 
             <ImageButton
-                android:id="@+id/dialogToDoChiudi"
+                android:id="@+id/dialogOrarioChiudi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -38,13 +38,13 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="8dp"
-                android:layout_toEndOf="@id/dialogToDoChiudi"
+                android:layout_toEndOf="@id/dialogOrarioChiudi"
                 android:text="Inserimento evento"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
             <Button
-                android:id="@+id/dialogToDoButtonAdd"
+                android:id="@+id/dialogOrarioButtonAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -66,24 +66,27 @@
         android:layout_marginTop="15dp">
 
         <EditText
-            android:id="@+id/dialogToDoNome"
+            android:id="@+id/text_orario_nome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:hint="Nome Evento"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            app:layout_constraintBottom_toTopOf="@id/text_luogo"/>
 
         <EditText
             android:id="@+id/text_luogo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
             android:hint="Luogo/Aula"
             android:textSize="16sp"
-            app:layout_constraintTop_toBottomOf="@+id/dialogToDoNome" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_orario_nome" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -188,8 +191,8 @@
                 android:textColor="@android:color/black"
                 android:textSize="15sp" />
 
-            <Button
-                android:id="@+id/GiornoButton"
+            <Spinner
+                android:id="@+id/GiornoSpinner"
                 style="@style/Widget.AppCompat.Spinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
