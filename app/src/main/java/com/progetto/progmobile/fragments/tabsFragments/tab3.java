@@ -33,7 +33,7 @@ import com.progetto.progmobile.entities.Evento;
 public class tab3 extends Fragment {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    private CollectionReference mercolediRef = db.collection("utenti").document(user.getUid()).collection("Mercoledi");
+    private CollectionReference mercolediRef = db.collection("utenti").document(user.getUid()).collection("Mercoledì");
 
     private AdapterOrario adapterOrario;
 
