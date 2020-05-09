@@ -24,7 +24,9 @@ import com.progetto.progmobile.AdapterCorsi;
 
 import com.progetto.progmobile.R;
 
+import com.progetto.progmobile.dialogs.DialogCorso;
 import com.progetto.progmobile.dialogs.DialogToDo;
+import com.progetto.progmobile.entities.Appunto;
 import com.progetto.progmobile.entities.Corso;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -33,6 +35,7 @@ public class FragmentCorsi extends Fragment  {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private CollectionReference corsiRef = db.collection("utenti").document(user.getUid()).collection("Corsi");
+
 
     private AdapterCorsi adapter;
 
@@ -104,17 +107,9 @@ public class FragmentCorsi extends Fragment  {
                 Corso corso = documentSnapshot.toObject(Corso.class);
 
                 String path = documentSnapshot.getReference().getPath(); //ottengo il path del documento che posso passare ad un altra activity ad esempio per modificare
-
-                //String id = documentSnapshot.getId();
-                //attivita.getDescrizione();
-                //documentSnapshot.getReference();
-                //Toast.makeText(getContext(), "Position: " + position + " ID: " + id , Toast.LENGTH_SHORT).show();
-
-                //startActivity(); posso lanciare un altra activity e fare modifiche sul db, devo passare l'id del document!!!!!!!!!!
-
-                //DialogToDo dialogModifyToDo = new DialogToDo(attivita, path);
-                //assert getFragmentManager() != null;
-                //dialogModifyToDo.show(getFragmentManager(), "tag");
+                DialogCorso dialogModifyCorso = new DialogCorso(corso, path);
+                assert getFragmentManager() != null;
+                dialogModifyCorso.show(getFragmentManager(), "tag");
             }
         });
 
@@ -125,9 +120,9 @@ public class FragmentCorsi extends Fragment  {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogToDo dialogAddToDo = new DialogToDo();
+                DialogCorso dialogCorso = new DialogCorso();
                 assert getFragmentManager() != null;
-                dialogAddToDo.show(getFragmentManager(), "tag");
+                dialogCorso.show(getFragmentManager(), "tag");
             }
         });
 

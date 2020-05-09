@@ -65,7 +65,7 @@ public class DialogCorso extends DialogFragment implements View.OnClickListener 
             nomeCorso.setText(corso.getNome());
             nomeProfessore.setText(corso.getNomeProfessore());
             emailProfessore.setText(corso.getEmailProfessore());
-            numeroCFU.setText(corso.getNumeroCFU());
+            numeroCFU.setText(String.format("%d", corso.getNumeroCFU()));
 
         } else txtCorso.setText("Inserimento Corso");
 
