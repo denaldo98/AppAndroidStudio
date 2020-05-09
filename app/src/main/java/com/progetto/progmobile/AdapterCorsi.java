@@ -24,7 +24,7 @@ public class AdapterCorsi extends FirestoreRecyclerAdapter<Corso, AdapterCorsi.C
     @Override
     protected void onBindViewHolder(@NonNull CorsoHolder holder, int position, @NonNull Corso model) {
         holder.textNome.setText(model.getNome());
-        holder.textCFU.setText(model.getNumeroCFU());
+        holder.textCFU.setText(String.format("%d", model.getNumeroCFU()));
     }
 
     @NonNull
@@ -46,8 +46,8 @@ public class AdapterCorsi extends FirestoreRecyclerAdapter<Corso, AdapterCorsi.C
 
         public CorsoHolder(@NonNull View itemView) {
             super(itemView);
-            textNome = itemView.findViewById(R.id.textToDoNome);
-            textCFU = itemView.findViewById(R.id.textToDoData);
+            textNome = itemView.findViewById(R.id.textRigaCorsoNome);
+            textCFU = itemView.findViewById(R.id.textRigaCorsoCFU);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

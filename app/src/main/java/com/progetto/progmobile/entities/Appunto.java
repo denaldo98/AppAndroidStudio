@@ -4,6 +4,13 @@ public class Appunto {
     String titolo;
     String testo;
 
+    public Appunto () {}
+
+    public Appunto(String titolo, String testo) {
+        this.titolo = titolo;
+        this.testo = testo;
+    }
+
     public String getTitolo() {
         return titolo;
     }
