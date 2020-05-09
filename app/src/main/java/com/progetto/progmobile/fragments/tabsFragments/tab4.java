@@ -50,14 +50,14 @@ public class tab4 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.fragment_tab1, container, false);
+        final View view = inflater.inflate(R.layout.fragment_tab4, container, false);
         Query query = giovediRef.orderBy("oraInizio", Query.Direction.ASCENDING);
 
         FirestoreRecyclerOptions<Evento> options = new FirestoreRecyclerOptions.Builder<Evento>().setQuery(query, Evento.class).build();
 
         adapterOrario = new AdapterOrario(options);
 
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerviewOrario1);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerviewOrario4);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapterOrario);
