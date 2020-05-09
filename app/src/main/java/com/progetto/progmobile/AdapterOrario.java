@@ -13,7 +13,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.progetto.progmobile.entities.Evento;
 
-public class AdapterOrario extends FirestoreRecyclerAdapter<Evento, AdapterOrario.ToDoHolder> {
+public class AdapterOrario extends FirestoreRecyclerAdapter<Evento, AdapterOrario.OrarioHolder> {
     private OnItemClickListener listener;
 
     public AdapterOrario(@NonNull FirestoreRecyclerOptions<Evento> options) {
@@ -21,18 +21,18 @@ public class AdapterOrario extends FirestoreRecyclerAdapter<Evento, AdapterOrari
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ToDoHolder holder, int position, @NonNull Evento model) {
+    protected void onBindViewHolder(@NonNull OrarioHolder holder, int position, @NonNull Evento model) {
         holder.textNome.setText(model.getNome());
         holder.textAula.setText(model.getAula());
-        holder.textOraFine.setText(model.getOraInizio());
+        holder.textOraInizio.setText(model.getOraInizio());
         holder.textOraFine.setText(model.getOraFine());
     }
 
     @NonNull
     @Override
-    public ToDoHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public OrarioHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.riga_orario, parent, false);
-        return new ToDoHolder(v);
+        return new OrarioHolder(v);
     }
 
     public void deleteItem(int position) {
@@ -42,10 +42,10 @@ public class AdapterOrario extends FirestoreRecyclerAdapter<Evento, AdapterOrari
 
 
 
-    class ToDoHolder extends RecyclerView.ViewHolder {
+    class OrarioHolder extends RecyclerView.ViewHolder {
         TextView textNome, textAula, textOraInizio, textOraFine;
 
-        public ToDoHolder(@NonNull View itemView) {
+        public OrarioHolder(@NonNull View itemView) {
             super(itemView);
             textNome = itemView.findViewById(R.id.textNome);
             textAula = itemView.findViewById(R.id.textAula);
