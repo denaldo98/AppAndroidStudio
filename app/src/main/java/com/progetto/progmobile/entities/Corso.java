@@ -5,14 +5,16 @@ public class Corso {
     private String nomeProfessore;
     private int numeroCFU;
     private String emailProfessore;
-    private Appunto[] appunti;
+    //private Appunto[] appunti;
 
-    public Corso (String nome, String nomeProfessore, int numeroCFU, String emailProfessore, Appunto[] appunti){
+    public Corso () {}
+
+    public Corso (String nome, String nomeProfessore, int numeroCFU, String emailProfessore/*, Appunto[] appunti*/){
         this.nome = nome;
         this.nomeProfessore = nomeProfessore;
         this.numeroCFU = numeroCFU;
         this.emailProfessore = emailProfessore;
-        this.appunti = appunti;
+        //this.appunti = appunti;
     }
 
     public String getNomeProfessore() {
@@ -31,7 +33,7 @@ public class Corso {
         return emailProfessore;
     }
 
-    public Appunto[] getAppunti() {
+    /*public Appunto[] getAppunti() {
         return appunti;
-    }
+    }*/
 }

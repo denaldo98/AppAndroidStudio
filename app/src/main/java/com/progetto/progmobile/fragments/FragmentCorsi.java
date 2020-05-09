@@ -105,10 +105,10 @@ public class FragmentCorsi extends Fragment  {
 
                 String path = documentSnapshot.getReference().getPath(); //ottengo il path del documento che posso passare ad un altra activity ad esempio per modificare
 
-                String id = documentSnapshot.getId();
+                //String id = documentSnapshot.getId();
                 //attivita.getDescrizione();
                 //documentSnapshot.getReference();
-                Toast.makeText(getContext(), "Position: " + position + " ID: " + id , Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "Position: " + position + " ID: " + id , Toast.LENGTH_SHORT).show();
 
                 //startActivity(); posso lanciare un altra activity e fare modifiche sul db, devo passare l'id del document!!!!!!!!!!
 
