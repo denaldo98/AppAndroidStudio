@@ -33,23 +33,25 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/textNome"
             android:layout_alignParentStart="true"
+            android:layout_toStartOf="@id/textOraFine"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="19dp"
+            android:layout_marginTop="10dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:textAlignment="textStart"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="italic" />
 
         <TextView
             android:id="@+id/textOraInizio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
             android:textAlignment="textEnd"
             android:layout_alignParentTop="true"
-            android:textSize="12sp"
+            android:layout_alignParentEnd="true"
+            android:textSize="20sp"
             android:textStyle="italic" />
 
         <TextView
@@ -57,13 +59,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/textOraInizio"
-            android:layout_alignParentStart="true"
-            android:maxLines="1"
-            android:textAlignment="textEnd"
-            android:textSize="12sp"
-            android:textStyle="italic"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:textStyle="italic"/>
 
 
     </RelativeLayout>
