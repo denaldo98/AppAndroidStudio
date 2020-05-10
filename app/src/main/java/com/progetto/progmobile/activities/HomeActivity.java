@@ -1,4 +1,4 @@
-package com.progetto.progmobile;
+package com.progetto.progmobile.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,22 +8,13 @@ import androidx.fragment.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.progetto.progmobile.entities.Attivita;
+import com.progetto.progmobile.R;
 import com.progetto.progmobile.fragments.FragmentAppelli;
 import com.progetto.progmobile.fragments.FragmentCorsi;
 import com.progetto.progmobile.fragments.FragmentOrario;
@@ -31,9 +22,6 @@ import com.progetto.progmobile.fragments.FragmentTodo;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 public class HomeActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.progetto.progmobile;
+package com.progetto.progmobile.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,22 +7,24 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-public class FaqActivity extends AppCompatActivity {
+import com.progetto.progmobile.R;
+
+public class PrivacyActivity extends AppCompatActivity {
     private ImageButton btnBack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_faq)
-        ;
+        setContentView(R.layout.activity_privacy);
+
         btnBack = findViewById(R.id.btn_to_home);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(FaqActivity.this, HomeActivity.class);
+                Intent intent = new Intent(PrivacyActivity.this, HomeActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
     }
 }
-

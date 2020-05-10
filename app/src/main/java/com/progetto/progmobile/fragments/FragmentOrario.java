@@ -16,7 +16,7 @@ import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.progetto.progmobile.R;
 import com.progetto.progmobile.dialogs.DialogOrario;
-import com.progetto.progmobile.fragments.tabsFragments.PageAdapter;
+import com.progetto.progmobile.uiutilities.PageAdapter;
 
 
 public class FragmentOrario extends Fragment {

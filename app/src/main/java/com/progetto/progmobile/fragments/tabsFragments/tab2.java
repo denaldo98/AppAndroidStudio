@@ -22,7 +22,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-import com.progetto.progmobile.AdapterOrario;
+import com.progetto.progmobile.uiutilities.AdapterOrario;
 
 import com.progetto.progmobile.R;
 import com.progetto.progmobile.dialogs.DialogOrario;

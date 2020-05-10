@@ -1,9 +1,16 @@
-package com.progetto.progmobile.fragments.tabsFragments;
+package com.progetto.progmobile.uiutilities;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+
+import com.progetto.progmobile.fragments.tabsFragments.tab1;
+import com.progetto.progmobile.fragments.tabsFragments.tab2;
+import com.progetto.progmobile.fragments.tabsFragments.tab3;
+import com.progetto.progmobile.fragments.tabsFragments.tab4;
+import com.progetto.progmobile.fragments.tabsFragments.tab5;
+import com.progetto.progmobile.fragments.tabsFragments.tab6;
 
 public class PageAdapter extends FragmentPagerAdapter {
 

@@ -1,15 +1,16 @@
-package com.progetto.progmobile;
+package com.progetto.progmobile.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.progetto.progmobile.R;
 
 public class ContactsActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageButton btnBack;

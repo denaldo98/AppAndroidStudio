@@ -1,4 +1,4 @@
-package com.progetto.progmobile;
+package com.progetto.progmobile.uiutilities;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.progetto.progmobile.R;
 import com.progetto.progmobile.entities.Evento;
 
 public class AdapterOrario extends FirestoreRecyclerAdapter<Evento, AdapterOrario.OrarioHolder> {
