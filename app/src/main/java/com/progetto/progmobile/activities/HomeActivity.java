@@ -131,18 +131,22 @@ public class HomeActivity extends AppCompatActivity {
             case R.id.menuSettings:
                 intent = new Intent(HomeActivity.this, SettingsActivity.class);
                 startActivity(intent);
+                finish();
                 return true;
             case R.id.menuFaq:
                 intent = new Intent(HomeActivity.this, FaqActivity.class);
                 startActivity(intent);
+                finish();
                 return true;
             case R.id.menuContattaci:
                 intent = new Intent(HomeActivity.this, ContactsActivity.class);
                 startActivity(intent);
+                finish();
                 return true;
             case R.id.menuPrivacy:
                 intent = new Intent(HomeActivity.this, PrivacyActivity.class);
                 startActivity(intent);
+                finish();
                 return true;
             case R.id.menuLogout:
                 FirebaseAuth.getInstance().signOut();

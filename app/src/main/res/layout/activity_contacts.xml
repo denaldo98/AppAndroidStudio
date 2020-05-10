@@ -53,8 +53,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginStart="8dp"
-        android:text="Puoi contattarci a una di queste email:"
-        android:textSize="23sp"
+        android:text="Per qualsiasi informazione o problema, si prega di contattare una delle sequenti email:"
+        android:textSize="25sp"
         android:textColor="@android:color/black"/>
     <TextView
         android:id="@+id/mail_marco"
@@ -89,11 +89,29 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginStart="10dp"
-        android:text="emaildena@gmail.com"
+        android:text="denaldo98@gmail.com"
         android:textSize="30sp"
         android:textColor="@android:color/black"
         android:background="@android:color/holo_blue_light"
         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:layout_marginStart="8dp"
+        android:text="Visitando la sezione FAQ, potresti trovare la risposta al tuo problema"
+        android:textSize="25sp"
+        android:textColor="@android:color/black"/>
+    <Button
+        android:id="@+id/btn_to_faq"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Vai alla sezione FAQ"
+        android:textSize="18sp"
+        android:backgroundTint="@color/colorPrimary"/>
+
 
 
 </LinearLayout>
