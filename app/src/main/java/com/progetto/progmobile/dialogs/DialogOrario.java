@@ -2,6 +2,7 @@ package com.progetto.progmobile.dialogs;
 
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -28,6 +31,7 @@ import com.progetto.progmobile.entities.Evento;
 import java.util.Calendar;
 
 import static com.progetto.progmobile.R.id.OraIButton;
+import static com.progetto.progmobile.R.id.textAula;
 
 public class DialogOrario extends DialogFragment implements AdapterView.OnItemSelectedListener {
 
@@ -35,21 +39,26 @@ public class DialogOrario extends DialogFragment implements AdapterView.OnItemSe
     private Button btnOraI, btnOraF; //bottoni che aprono i time-picker
     private Spinner spinner; //spinner giorno
     private String giorno;
+    private String giornoVecchio;
     private String stringOraI, stringOraF;
     private int oraI, oraF, minutoI, minutoF;
 
 
     private String path;
     private Evento evento;
+    private int giornopos;
 
     public DialogOrario() {
         this.evento = null;
         this.path = null;
+        this.giornopos = -1;
     }
 
-    public DialogOrario(Evento evento, String path) {
+    public DialogOrario(Evento evento, String path, int giornopos, String giornoVecchio) {
         this.evento = evento;
         this.path = path;
+        this.giornopos = giornopos;
+        this.giornoVecchio = giornoVecchio;
     }
 
 
@@ -68,12 +77,12 @@ public class DialogOrario extends DialogFragment implements AdapterView.OnItemSe
         Button aggiungi = view.findViewById(R.id.dialogOrarioButtonAdd);
         nomeEvento = view.findViewById(R.id.text_orario_nome);
         luogoEvento = view.findViewById(R.id.text_luogo);
-
         spinner = (Spinner) view.findViewById(R.id.GiornoSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.Giorni, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
+
 
 
         chiudi.setOnClickListener(new View.OnClickListener() {
@@ -128,17 +137,48 @@ public class DialogOrario extends DialogFragment implements AdapterView.OnItemSe
         });
 
 
+        if(this.path != null) {
+            spinner.setSelection(giornopos);
+            nomeEvento.setText(evento.getNome().toString());
+            luogoEvento.setText(evento.getAula().toString());
+            btnOraI.setText(evento.getOraInizio().toString());
+            btnOraF.setText(evento.getOraFine().toString());
+            stringOraI = evento.getOraInizio();
+            stringOraF = evento.getOraFine();
+        }
+
+
 
         aggiungi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String nome = nomeEvento.getText().toString();
                 String aula = luogoEvento.getText().toString();
-                if(nome.trim().isEmpty() || stringOraI.isEmpty() || stringOraF.isEmpty()) {
-                    Toast.makeText(getContext(), "Please insert a name ........", Toast.LENGTH_LONG).show();
+                if(nome.trim().isEmpty() || stringOraI == null || stringOraF == null) {
+                    Toast.makeText(getContext(), "Please insert a name", Toast.LENGTH_LONG).show();
                 } else {
                     if(path != null) {
-                        FirebaseFirestore.getInstance().document(path).set(new Evento(nome, aula , stringOraI , stringOraF ));
+                        if(spinner.getSelectedItem().toString().equals(giornoVecchio)) {
+                            FirebaseFirestore.getInstance().document(path).set(new Evento(nome, aula, stringOraI, stringOraF));
+                        } else {
+                            FirebaseFirestore.getInstance().document(path).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(getContext(), "E' stata creata una copia dell'evento nel giorno" + giorno, Toast.LENGTH_LONG).show();
+                                        }
+                                    });
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            CollectionReference todoRef = FirebaseFirestore.getInstance().collection("utenti").document(user.getUid()).collection(giorno);
+                            todoRef.add(new Evento(nome, aula , stringOraI , stringOraF ));
+                            Toast.makeText(getContext(), "Evento modificato e spostato al giorno " + giorno , Toast.LENGTH_LONG).show();
+
+                        }
                         Toast.makeText(getContext(), "Evento modificato", Toast.LENGTH_LONG).show();
                     } else {
                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -169,6 +209,7 @@ public class DialogOrario extends DialogFragment implements AdapterView.OnItemSe
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
         giorno = "Lunedì";
+
 
     }
 }
