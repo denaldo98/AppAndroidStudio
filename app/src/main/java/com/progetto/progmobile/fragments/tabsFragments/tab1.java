@@ -106,16 +106,11 @@ public class tab1 extends Fragment {
 
                 Evento evento = documentSnapshot.toObject(Evento.class);
 
-                String path = documentSnapshot.getReference().getPath(); //ottengo il path del documento che posso passare ad un altra activity ad esempio per modificare
+                String path = documentSnapshot.getReference().getPath();
 
-                //String id = documentSnapshot.getId();
-                //attivita.getDescrizione();
-                //documentSnapshot.getReference();
-                //Toast.makeText(getContext(), "Position: " + position + " ID: " + id , Toast.LENGTH_SHORT).show();
 
-                //startActivity(); posso lanciare un altra activity e fare modifiche sul db, devo passare l'id del document!!!!!!!!!!
 
-                DialogOrario dialogModifyOrario = new DialogOrario(evento, path);
+                DialogOrario dialogModifyOrario = new DialogOrario(evento, path, 0, "Lunedì");
                 assert getFragmentManager() != null;
                 dialogModifyOrario.show(getFragmentManager(), "tag");
             }
@@ -123,6 +118,7 @@ public class tab1 extends Fragment {
 
         return view;
     }
+
 
 
     @Override
