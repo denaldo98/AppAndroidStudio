@@ -25,6 +25,7 @@ import com.progetto.progmobile.AdapterCorsi;
 import com.progetto.progmobile.R;
 
 import com.progetto.progmobile.dialogs.DialogCorso;
+import com.progetto.progmobile.dialogs.DialogCorsoVisualizza;
 import com.progetto.progmobile.dialogs.DialogToDo;
 import com.progetto.progmobile.entities.Appunto;
 import com.progetto.progmobile.entities.Corso;
@@ -107,9 +108,9 @@ public class FragmentCorsi extends Fragment  {
                 Corso corso = documentSnapshot.toObject(Corso.class);
 
                 String path = documentSnapshot.getReference().getPath(); //ottengo il path del documento che posso passare ad un altra activity ad esempio per modificare
-                DialogCorso dialogModifyCorso = new DialogCorso(corso, path);
+                DialogCorsoVisualizza dialogCorsoVisualizza = new DialogCorsoVisualizza(corso, path);
                 assert getFragmentManager() != null;
-                dialogModifyCorso.show(getFragmentManager(), "tag");
+                dialogCorsoVisualizza.show(getFragmentManager(), "tag");
             }
         });
 

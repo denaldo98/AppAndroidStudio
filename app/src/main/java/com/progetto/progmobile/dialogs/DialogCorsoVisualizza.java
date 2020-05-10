@@ -38,7 +38,7 @@ public class DialogCorsoVisualizza extends DialogFragment implements View.OnClic
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dialog_corso_visualizza, container, false);
-        ImageButton chiudi = view.findViewById(R.id.dialogCorsoButtonModify);
+        ImageButton chiudi = view.findViewById(R.id.dialogCorsoChiudi);
         nomeCorso = view.findViewById(R.id.nomeCorso);
         nomeProfessore = view.findViewById(R.id.nomeProfessore);
         emailProfessore = view.findViewById(R.id.emailProfessore);
@@ -62,7 +62,10 @@ public class DialogCorsoVisualizza extends DialogFragment implements View.OnClic
                 dismiss();
                 break;
             case R.id.dialogCorsoButtonModify:
+                DialogCorso dialogCorso = new DialogCorso(corso,path);
+                assert getFragmentManager() != null;
                 dismiss();
+                dialogCorso.show(getFragmentManager(), "tag");
                 break;
             default:
                 break;
