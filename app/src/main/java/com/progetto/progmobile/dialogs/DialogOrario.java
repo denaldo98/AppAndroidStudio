@@ -155,7 +155,7 @@ public class DialogOrario extends DialogFragment implements AdapterView.OnItemSe
                 String nome = nomeEvento.getText().toString();
                 String aula = luogoEvento.getText().toString();
                 if(nome.trim().isEmpty() || stringOraI == null || stringOraF == null) {
-                    Toast.makeText(getContext(), "Per favore, inserisci Nome, Ora Inizio e Ora Fine", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Inserire Nome, Ora Inizio e Ora Fine", Toast.LENGTH_LONG).show();
                 } else {
                     if(path != null) {
                         if(spinner.getSelectedItem().toString().equals(giornoVecchio)) {
