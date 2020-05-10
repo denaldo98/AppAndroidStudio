@@ -70,4 +70,7 @@
     <string name="conferma">CONFERMA</string>
 
 
+    <string name="privacy1">I tuoi dati vengono salvati in un database privato (fornito da Firebase Firestore) a cui nessun utente di terze parti può accedere.</string>
+    <string name="privacy2">Inoltre i tuoi dati non vengono utilizzati o elabaorati in nessun modo, sono utilizzati per essere facilmente accessibili dai nostri utenti!</string>
+
 </resources>

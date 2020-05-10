@@ -47,4 +47,55 @@
 
     </androidx.cardview.widget.CardView>
 
+    <Button
+        android:id="@+id/impostazione1"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="impostazione1"
+        />
+
+    <Button
+        android:id="@+id/impostazione2"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="impostazione2"
+        />
+
+    <Button
+        android:id="@+id/impostazione3"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="impostazione3"
+        />
+
+    <TextView
+        android:id="@+id/impostazione4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="5dp"
+        android:text="Impostazione4 (on/off)"
+        android:textColor="@android:color/black"
+        android:textSize="30sp" />
+
+    <ToggleButton
+        android:id="@+id/togglebtn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/impostazione5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="5dp"
+        android:text="Impostazione5 (on/off)"
+        android:textColor="@android:color/black"
+        android:textSize="30sp" />
+
+    <ToggleButton
+        android:id="@+id/togglebtn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>
