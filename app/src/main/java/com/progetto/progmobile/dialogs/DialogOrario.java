@@ -155,11 +155,12 @@ public class DialogOrario extends DialogFragment implements AdapterView.OnItemSe
                 String nome = nomeEvento.getText().toString();
                 String aula = luogoEvento.getText().toString();
                 if(nome.trim().isEmpty() || stringOraI == null || stringOraF == null) {
-                    Toast.makeText(getContext(), "Please insert a name", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Per favore, inserisci Nome, Ora Inizio e Ora Fine", Toast.LENGTH_LONG).show();
                 } else {
                     if(path != null) {
                         if(spinner.getSelectedItem().toString().equals(giornoVecchio)) {
                             FirebaseFirestore.getInstance().document(path).set(new Evento(nome, aula, stringOraI, stringOraF));
+                            Toast.makeText(getContext(), "Evento modificato", Toast.LENGTH_LONG).show();
                         } else {
                             FirebaseFirestore.getInstance().document(path).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
@@ -174,16 +175,16 @@ public class DialogOrario extends DialogFragment implements AdapterView.OnItemSe
                                         }
                                     });
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                            CollectionReference todoRef = FirebaseFirestore.getInstance().collection("utenti").document(user.getUid()).collection(giorno);
-                            todoRef.add(new Evento(nome, aula , stringOraI , stringOraF ));
+                            CollectionReference orarioRef = FirebaseFirestore.getInstance().collection("utenti").document(user.getUid()).collection(giorno);
+                            orarioRef.add(new Evento(nome, aula , stringOraI , stringOraF ));
                             Toast.makeText(getContext(), "Evento modificato e spostato al giorno " + giorno , Toast.LENGTH_LONG).show();
 
                         }
-                        Toast.makeText(getContext(), "Evento modificato", Toast.LENGTH_LONG).show();
+
                     } else {
                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                        CollectionReference todoRef = FirebaseFirestore.getInstance().collection("utenti").document(user.getUid()).collection(giorno);
-                        todoRef.add(new Evento(nome, aula , stringOraI , stringOraF ));
+                        CollectionReference orarioRef = FirebaseFirestore.getInstance().collection("utenti").document(user.getUid()).collection(giorno);
+                        orarioRef.add(new Evento(nome, aula , stringOraI , stringOraF ));
                         Toast.makeText(getContext(), "Evento aggiunto", Toast.LENGTH_LONG).show();
                     }
                     dismiss();
@@ -197,7 +198,6 @@ public class DialogOrario extends DialogFragment implements AdapterView.OnItemSe
 
         return view;
     }
-
 
 
 
