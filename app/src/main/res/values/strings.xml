@@ -69,8 +69,13 @@
     <string name="indietro">Indietro</string>
     <string name="conferma">CONFERMA</string>
 
-
+    //Privacy
     <string name="privacy1">I tuoi dati vengono salvati in un database privato (fornito da Firebase Firestore) a cui nessun utente di terze parti può accedere.</string>
     <string name="privacy2">Inoltre i tuoi dati non vengono utilizzati o elabaorati in nessun modo, sono utilizzati per essere facilmente accessibili dai nostri utenti!</string>
+
+
+    //FAQ
+    <string name="faq1">- I miei dati sono al sicuro?\n\nAssolutamente sì, puoi visitare la sezione privacy per maggiri informazioni.</string>
+    <string name="faq2">- Cosa faccio se dimentico la password?\n\nPuoi resettarla senza perdere i dati salvati sul tuo accout!</string>
 
 </resources>

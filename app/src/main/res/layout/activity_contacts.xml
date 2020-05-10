@@ -64,6 +64,7 @@
         android:text="emailmarco@gmail.com"
         android:textSize="30sp"
         android:textColor="@android:color/black"
+        android:background="@android:color/holo_orange_light"
         />
 
     <TextView
@@ -72,6 +73,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginStart="10dp"
         android:text="emailantonio@gmail.com"
+        android:background="@android:color/holo_green_light"
         android:textSize="30sp"
         android:textColor="@android:color/black"
         />
@@ -84,6 +86,7 @@
         android:text="emaildena@gmail.com"
         android:textSize="30sp"
         android:textColor="@android:color/black"
+        android:background="@android:color/holo_blue_light"
         />
 
 
