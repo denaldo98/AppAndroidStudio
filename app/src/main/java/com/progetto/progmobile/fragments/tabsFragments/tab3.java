@@ -114,7 +114,7 @@ public class tab3 extends Fragment {
 
                 //startActivity(); posso lanciare un altra activity e fare modifiche sul db, devo passare l'id del document!!!!!!!!!!
 
-                DialogOrario dialogModifyOrario = new DialogOrario(evento, path);
+                DialogOrario dialogModifyOrario = new DialogOrario(evento, path, 2, "Mercoledì");
                 assert getFragmentManager() != null;
                 dialogModifyOrario.show(getFragmentManager(), "tag");
             }
