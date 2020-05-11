@@ -31,7 +31,7 @@ import com.progetto.progmobile.entities.Appunto;
 import com.progetto.progmobile.entities.Corso;
 import com.progetto.progmobile.uiutilities.AdapterAppunti;
 
-public class DialogCorsoVisualizza extends DialogFragment implements View.OnClickListener {
+public class DialogCorsoVisualizza extends DialogFragment{
 
     private TextView nomeCorso, nomeProfessore, emailProfessore, numeroCFU;
     private RecyclerView appunti;
@@ -111,7 +111,7 @@ public class DialogCorsoVisualizza extends DialogFragment implements View.OnClic
             }
         }).attachToRecyclerView(appunti);
 
-        /*appunti.setOnItemClickListener(new AdapterAppunti.OnItemClickListener() {
+        adapterAppunti.setOnItemClickListener(new AdapterAppunti.OnItemClickListener() {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
 
@@ -130,10 +130,9 @@ public class DialogCorsoVisualizza extends DialogFragment implements View.OnClic
                 //assert getFragmentManager() != null;
                 //dialogModifyToDo.show(getFragmentManager(), "tag");
             }
-        });*/
+        });
 
         btnAdd = view.findViewById(R.id.button_add_appunto);
-
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,25 +146,22 @@ public class DialogCorsoVisualizza extends DialogFragment implements View.OnClic
 
 
 
-        chiudi.setOnClickListener(this);
-        modifica.setOnClickListener(this);
-        return view;
-    }
-
-    @Override
-    public void onClick(View v) { //DA MODIFICARE QUI!
-        int id = v.getId();
-        switch (id) {
-            case R.id.dialogCorsoChiudi:
+        chiudi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 dismiss();
-                break;
-            case R.id.dialogCorsoButtonModify:
+            }
+        });
+        modifica.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 DialogCorso dialogCorso = new DialogCorso(corso,path);
                 assert getFragmentManager() != null;
                 dismiss();
                 dialogCorso.show(getFragmentManager(), "tag");
-                break;
-        }
+            }
+        });
+        return view;
     }
 
 }
