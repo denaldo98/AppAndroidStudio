@@ -13,6 +13,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.progetto.progmobile.R;
 import com.progetto.progmobile.entities.Corso;
 
@@ -22,10 +26,14 @@ public class DialogCorsoVisualizza extends DialogFragment implements View.OnClic
     private RecyclerView appunti;
     private String path;
     private Corso corso;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private CollectionReference appuntiRef;
 
     public DialogCorsoVisualizza (Corso corso, String path) {
         this.corso = corso;
         this.path = path;
+        //this.appuntiRef = db.collection("utenti").document(user.getUid()).collection("Corsi").;
     }
 
     @Override
