@@ -33,7 +33,7 @@ public class DialogCorsoVisualizza extends DialogFragment implements View.OnClic
     public DialogCorsoVisualizza (Corso corso, String path) {
         this.corso = corso;
         this.path = path;
-        //this.appuntiRef = db.collection("utenti").document(user.getUid()).collection("Corsi").;
+        this.appuntiRef = db.document(path).collection("Appunti");
     }
 
     @Override
