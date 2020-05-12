@@ -41,6 +41,7 @@ public class DialogCorsoVisualizza extends DialogFragment{
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private CollectionReference appuntiRef;
     private ImageButton btnAdd;
+    private AdapterAppunti adapterAppunti;
 
     public DialogCorsoVisualizza (Corso corso, String path) {
         this.corso = corso;
@@ -73,8 +74,8 @@ public class DialogCorsoVisualizza extends DialogFragment{
 
         Query query = appuntiRef.orderBy("titolo", Query.Direction.ASCENDING);
         FirestoreRecyclerOptions<Appunto> options = new FirestoreRecyclerOptions.Builder<Appunto>().setQuery(query, Appunto.class).build();
-        final AdapterAppunti adapterAppunti = new AdapterAppunti(options);
-        appunti = view.findViewById(R.id.recyclerViewAppunti);
+        adapterAppunti = new AdapterAppunti(options);
+        appunti = (RecyclerView)view.findViewById(R.id.recyclerViewAppunti);
         appunti.setHasFixedSize(true);
         appunti.setLayoutManager(new LinearLayoutManager(getContext()));
         appunti.setAdapter(adapterAppunti);
@@ -162,6 +163,18 @@ public class DialogCorsoVisualizza extends DialogFragment{
             }
         });
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapterAppunti.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapterAppunti.stopListening();
     }
 
 }
