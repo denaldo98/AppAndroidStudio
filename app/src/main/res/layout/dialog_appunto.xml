@@ -93,9 +93,9 @@
                 android:layout_marginBottom="8dp"
                 android:hint="Testo appunto"
                 android:inputType="textMultiLine"
+                android:lines="22"
                 android:textAlignment="textStart"
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
 
         </RelativeLayout>
 
