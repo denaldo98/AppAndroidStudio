@@ -120,16 +120,12 @@ public class DialogCorsoVisualizza extends DialogFragment{
 
                 String path2 = documentSnapshot.getReference().getPath(); //ottengo il path del documento che posso passare ad un altra activity ad esempio per modificare
 
-                //String id = documentSnapshot.getId();
-                //attivita.getDescrizione();
-                //documentSnapshot.getReference();
-                //Toast.makeText(getContext(), "Position: " + position + " ID: " + id , Toast.LENGTH_SHORT).show();
 
-                //startActivity(); posso lanciare un altra activity e fare modifiche sul db, devo passare l'id del document!!!!!!!!!!
 
-                //DialogToDo dialogModifyToDo = new DialogToDo(appunto, path2);
-                //assert getFragmentManager() != null;
-                //dialogModifyToDo.show(getFragmentManager(), "tag");
+
+                DialogAppunto dialogModifyAppunto = new DialogAppunto(appunto, path2);
+                assert getFragmentManager() != null;
+                dialogModifyAppunto.show(getFragmentManager(), "tag");
             }
         });
 
@@ -138,9 +134,9 @@ public class DialogCorsoVisualizza extends DialogFragment{
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogToDo dialogAddToDo = new DialogToDo();
+                DialogAppunto dialogAppunto = new DialogAppunto(path);
                 assert getFragmentManager() != null;
-                dialogAddToDo.show(getFragmentManager(), "tag");
+                dialogAppunto.show(getFragmentManager(), "tag");
             }
         });
 
