@@ -50,7 +50,7 @@
     <string name="bassa">Bassa</string>
     <string name="media">Media</string>
     <string name="alta">Alta</string>
-    <string name="inserimentoAttivita">Inserimento attività</string>
+    <string name="inserimentoAttivita">Inserimento Attività</string>
 
 
     <string-array name="Giorni">
@@ -70,12 +70,13 @@
     <string name="conferma">CONFERMA</string>
 
     //Privacy
-    <string name="privacy1">I tuoi dati vengono salvati in un database privato (fornito da Firebase Firestore) a cui nessun utente di terze parti può accedere.</string>
-    <string name="privacy2">Inoltre i tuoi dati non vengono utilizzati o elabaorati in nessun modo, sono utilizzati per essere facilmente accessibili dai nostri utenti!</string>
+    <string name="privacy1">- I tuoi dati vengono salvati in un database privato (fornito da Firebase Firestore) a cui nessun utente di terze parti può accedere.</string>
+    <string name="privacy2">- Inoltre i tuoi dati non vengono utilizzati o elaborati in alcun modo, sono utilizzati per essere facilmente accessibili dai nostri utenti!</string>
 
 
     //FAQ
-    <string name="faq1">- I miei dati sono al sicuro?\n\nAssolutamente sì, puoi visitare la sezione privacy per maggiri informazioni.</string>
-    <string name="faq2">- Cosa faccio se dimentico la password?\n\nPuoi resettarla senza perdere i dati salvati sul tuo accout!</string>
+    <string name="faq1">- I miei dati sono al sicuro?\n\nAssolutamente sì, puoi visitare la sezione privacy per maggiori informazioni.</string>
+    <string name="faq2">- Cosa faccio se dimentico la password?\n\nPuoi resettarla senza perdere i dati salvati sul tuo account</string>
+    <string name="faq3">- Posso disinstallare l\'applicazione e cambiare dispositivo senza perdere i dati?\n\nSì, i dati non vengono persi quando l\'app viene disinstallata;\ndovrai solo effettuare il login!</string>
 
 </resources>

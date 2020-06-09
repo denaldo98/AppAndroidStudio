@@ -50,11 +50,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:layout_marginLeft="4dp"
         android:text="@string/privacy1"
         android:textColor="@android:color/black"
-        android:textSize="30sp"
+        android:textSize="26sp"
         />
 
     <TextView

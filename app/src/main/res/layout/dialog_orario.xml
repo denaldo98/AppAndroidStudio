@@ -39,7 +39,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="8dp"
                 android:layout_toEndOf="@id/dialogOrarioChiudi"
-                android:text="Inserimento evento"
+                android:text="Inserimento Evento"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
