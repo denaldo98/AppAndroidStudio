@@ -128,11 +128,6 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = null;
         // Handle presses on the action bar items
         switch (item.getItemId()) {
-            case R.id.menuSettings:
-                intent = new Intent(HomeActivity.this, SettingsActivity.class);
-                startActivity(intent);
-                finish();
-                return true;
             case R.id.menuFaq:
                 intent = new Intent(HomeActivity.this, FaqActivity.class);
                 startActivity(intent);

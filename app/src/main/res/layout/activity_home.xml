@@ -44,8 +44,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="#FFEB3B"
-            android:backgroundTint="#FFC107"
+            android:background="#FFC107"
+            android:backgroundTint="#FF9800"
             app:itemIconTint="@color/bottom_color"
             app:itemTextColor="#000"
             app:menu="@menu/bottom_menu" />

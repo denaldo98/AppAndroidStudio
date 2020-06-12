@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FFC107</color>
-    <color name="colorPrimaryDark">#FFA000</color>
-    <color name="colorAccent">#FFEB3B</color>
+    <color name="colorPrimary">#FF9800</color>
+    <color name="colorPrimaryDark">#F57C00</color>
+    <color name="colorAccent">#FFC107</color>
 
-    <!-- Colors for DatePicker -->
-    <color name="mdtp_accent_color">#070B82</color>
-    <color name="mdtp_accent_color_dark">#0D105E</color>
 
 
 </resources>

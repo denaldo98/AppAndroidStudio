@@ -14,7 +14,6 @@
         <activity android:name=".activities.ContactsActivity" />
         <activity android:name=".activities.PrivacyActivity" />
         <activity android:name=".activities.FaqActivity" />
-        <activity android:name=".activities.SettingsActivity" />
         <activity android:name=".activities.ResetPassword" />
         <activity android:name=".activities.Login" />
         <activity android:name=".activities.SignUp" />
