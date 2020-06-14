@@ -88,16 +88,18 @@ public class DialogCorso extends DialogFragment implements View.OnClickListener 
                 String stringNomeCorso = nomeCorso.getText().toString();
                 String stringNomeProfessore = nomeProfessore.getText().toString();
                 String stringEmailProfessore = emailProfessore.getText().toString();
-                int intNumeroCFU = Integer.parseInt(numeroCFU.getText().toString());
+                //int intNumeroCFU = Integer.parseInt(numeroCFU.getText().toString());
 
-                if (stringNomeCorso.trim().isEmpty()) {
-                    Toast.makeText(getContext(), "Please insert a course name", Toast.LENGTH_SHORT).show();
+                if (stringNomeCorso.trim().isEmpty() || stringNomeProfessore.trim().isEmpty() || stringEmailProfessore.trim().isEmpty() || numeroCFU.getText().toString().trim().isEmpty()) {
+                    Toast.makeText(getContext(), "Please insert a course name, professor, email, cfu", Toast.LENGTH_SHORT).show();
                 } else {
                     if(path != null) {
+                        int intNumeroCFU = Integer.parseInt(numeroCFU.getText().toString());
                         FirebaseFirestore.getInstance().document(path).set(new Corso(stringNomeCorso, stringNomeProfessore, intNumeroCFU, stringEmailProfessore));
                         Toast.makeText(getContext(), "Corso modificato", Toast.LENGTH_LONG).show();
                     }
                     else{
+                        int intNumeroCFU = Integer.parseInt(numeroCFU.getText().toString());
                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                         CollectionReference CorsiRef = FirebaseFirestore.getInstance().collection("utenti").document(user.getUid()).collection("Corsi");
                         CorsiRef.add(new Corso(stringNomeCorso, stringNomeProfessore, intNumeroCFU, stringEmailProfessore));
