@@ -82,23 +82,23 @@ public class SignUp extends AppCompatActivity {
 
         // Validations for input name, surname, email and password
         if(nome.trim().isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Please enter name!!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Per favore, inserire il nome!", Toast.LENGTH_LONG).show();
             return;
         }
         if(cognome.trim().isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Please enter surname!!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Per favore, inserire il cognome!", Toast.LENGTH_LONG).show();
             return;
         }
         if(email.trim().isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Please enter email!!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Per favore, inserire la mail!", Toast.LENGTH_LONG).show();
             return;
         }
         if(TextUtils.isEmpty(password)) {
-            Toast.makeText(getApplicationContext(), "Please enter password!!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Per favore, inserire la password!", Toast.LENGTH_LONG).show();
             return;
         }
         if (password.length() < 6) {
-            Toast.makeText(getApplicationContext(), "Password too short, enter minimum 6 characters!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "La password deve essere composta almeno da 6 caratteri!", Toast.LENGTH_LONG).show();
             return;
         }
         if (!(regPassword.getText().toString().equals(regConfirmPassword.getText().toString()))) {
@@ -121,7 +121,7 @@ public class SignUp extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<Void> task) {
                                             writeUserToDb(nome, cognome, user.getUid());   //Scriviamo le informazioni dell'utente (nome cognome) nel db firestore per identificare quell'utente: aggiungiamo un documento per il nostro utente
 
-                                            Toast.makeText(getApplicationContext(),"Registration successful!", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(getApplicationContext(),"Registrazione avvenuta con successo!", Toast.LENGTH_LONG).show();
 
                                              progressBar.setVisibility(View.GONE); // hide the progress bar
                                             Intent intent = new Intent(SignUp.this, HomeActivity.class);
@@ -131,7 +131,7 @@ public class SignUp extends AppCompatActivity {
                                     });
                 } else {
                     //Registration failed
-                    Toast.makeText(getApplicationContext(), "Registration failed!!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Registrazione fallita!", Toast.LENGTH_LONG).show();
                     progressBar.setVisibility(View.GONE); // hide the progress bar
                 }
             }

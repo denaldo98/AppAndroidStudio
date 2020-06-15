@@ -32,11 +32,6 @@ public class Login extends AppCompatActivity {
          {
              super.onCreate(savedInstanceState);
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);  //Per togliere la status bar
-             /*mAuth = FirebaseAuth.getInstance();
-             if (mAuth.getCurrentUser() != null) {
-                 startActivity(new Intent(Login.this, MainActivity.class));
-                 finish();
-             }*/
 
             setContentView(R.layout.activity_login);
 
@@ -85,11 +80,11 @@ public class Login extends AppCompatActivity {
              String userPassword = password.getText().toString();
 
              if (userEmail.trim().isEmpty() && userPassword.trim().isEmpty()) {
-                 Toast.makeText(getApplicationContext(), "Empty fields", Toast.LENGTH_LONG).show();
+                 Toast.makeText(getApplicationContext(), "Campi vuoti!", Toast.LENGTH_LONG).show();
              } else if (userEmail.trim().isEmpty()) {
-                 Toast.makeText(getApplicationContext(), "Please enter email!!", Toast.LENGTH_LONG).show();
+                 Toast.makeText(getApplicationContext(), "Per favore, inserire la mail!", Toast.LENGTH_LONG).show();
              } else if (TextUtils.isEmpty(userPassword)) {
-                 Toast.makeText(getApplicationContext(), "Please enter password!!", Toast.LENGTH_LONG).show();
+                 Toast.makeText(getApplicationContext(), "Per favore, inserire la password!", Toast.LENGTH_LONG).show();
              } else {
 
                  // show the visibility of progress bar to show loading
@@ -104,7 +99,7 @@ public class Login extends AppCompatActivity {
                          progressBar.setVisibility(View.GONE);
 
                          if (task.isSuccessful()) {
-                             Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
+                             Toast.makeText(getApplicationContext(), "Login effettuato con successo!", Toast.LENGTH_LONG).show();
 
                              // if sign-in is successful intent to HomeActivity
                              Intent intent = new Intent(Login.this, HomeActivity.class);
@@ -112,7 +107,7 @@ public class Login extends AppCompatActivity {
                              finish();
                          } else {
                              // sign-in failed
-                             Toast.makeText(getApplicationContext(), "Login failed!", Toast.LENGTH_LONG).show();
+                             Toast.makeText(getApplicationContext(), "Login fallito!", Toast.LENGTH_LONG).show();
 
                          }
                      }
