@@ -37,13 +37,6 @@ public class Appello {
         this.giorno = giorno;
     }
 
-    /*public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }*/
 
     public Appello(String materia, int anno, int mese, int giorno) {
         this.materia = materia;
