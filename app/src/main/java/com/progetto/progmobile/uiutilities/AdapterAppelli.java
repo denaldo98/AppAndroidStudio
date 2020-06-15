@@ -24,14 +24,16 @@ public class AdapterAppelli extends FirestoreRecyclerAdapter<Appello, AdapterApp
     @Override
     protected void onBindViewHolder(@NonNull AppelloHolder holder, int position, @NonNull Appello model) {
         holder.textMateria.setText(model.getMateria());
-        holder.textData.setText(new StringBuilder().append(model.getGiorno()).append("/").append(model.getMese()).append("/").append(model.getAnno()).toString());
+        holder.textData.setText(new StringBuilder().append(model.getGiorno())
+                .append("/").append(model.getMese()).append("/").append(model.getAnno()).toString());
 
     }
 
     @NonNull
     @Override
     public AppelloHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.riga_appello, parent, false);
+        View v = LayoutInflater.
+                from(parent.getContext()).inflate(R.layout.riga_appello, parent, false);
         return new AppelloHolder(v);
     }
 

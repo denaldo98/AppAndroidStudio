@@ -45,14 +45,16 @@ public class FragmentAppelli extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_appelli, container, false);
         Query query = appelliRef.orderBy("materia", Query.Direction.ASCENDING);
-        FirestoreRecyclerOptions<Appello> options = new FirestoreRecyclerOptions.Builder<Appello>().setQuery(query, Appello.class).build();
+        FirestoreRecyclerOptions<Appello> options = new FirestoreRecyclerOptions.
+                Builder<Appello>().setQuery(query, Appello.class).build();
         adapter2 = new AdapterAppelli(options);
         RecyclerView recyclerView = view.findViewById(R.id.recyclerviewAppelli);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter2);
 
-        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {  //il primo parametro è per il DRAG che non consideriamo, il secondo paramtro è per le direzione di swipe
+        new ItemTouchHelper(new ItemTouchHelper.
+                SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {  //il primo parametro è per il DRAG che non consideriamo, il secondo paramtro è per le direzione di swipe
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) { //onMove method is for drag and drop
                 return false;
